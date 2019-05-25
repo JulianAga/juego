@@ -8,6 +8,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import control.Teclado;
@@ -38,13 +39,15 @@ public class Juego extends Canvas implements Runnable {
 	private static BufferedImage imagen = new BufferedImage(ANCHO, 
 			ALTO, BufferedImage.TYPE_INT_RGB);
 	private static int [] pixeles = ((DataBufferInt) 
-			imagen.getRaster().getDataBuffer()).getData();
+			imagen.getRaster().getDataBuffer()).getData();			// Contamos los pixeles
+	
+	public static final ImageIcon icono= new ImageIcon(Juego.class.getResource("/icono/Velez.png"));	// con esta funcion añadimos el icono
 	
 
 	private Juego() {
-		setPreferredSize(new Dimension(ANCHO, ALTO));
+		setPreferredSize(new Dimension(ANCHO, ALTO));		// creamos la pantalla que corre el juego
 
-		pantalla = new Pantalla(ANCHO, ALTO);
+		pantalla = new Pantalla(ANCHO, ALTO);			
 		
 		teclado = new Teclado();
 		addKeyListener(teclado);
@@ -53,6 +56,7 @@ public class Juego extends Canvas implements Runnable {
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setResizable(false);
 		ventana.setLayout(new BorderLayout());
+		ventana.setIconImage(icono.getImage());
 		ventana.add(this, BorderLayout.CENTER);
 		ventana.pack();
 		ventana.setLocationRelativeTo(null);
@@ -149,7 +153,7 @@ public class Juego extends Canvas implements Runnable {
 		long referenciaContador = System.nanoTime();
 
 		double tiempoTranscurrido;
-		double delta = 0; // cantidad de tiempo transcurrido hasta actualizacion
+		double delta = 0; 	// cantidad de tiempo transcurrido hasta actualizacion
 
 		requestFocus();		// autoenfocar el teclado en la ventana
 		
@@ -165,10 +169,10 @@ public class Juego extends Canvas implements Runnable {
 			while (delta >= 1) // actualiza el juego cuando delta es uno
 			{
 				actualizar();
-				mostrar();
 				delta--;
 			}
-
+			
+			mostrar();
 		
 
 			if (System.nanoTime() - referenciaContador > NS_POR_SEGUNDO) {

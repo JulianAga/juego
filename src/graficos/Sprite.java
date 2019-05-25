@@ -12,7 +12,7 @@ public final class Sprite {
 	private final HojaSprites hoja;
 	
 	//coleccion de sprites
-	public static Sprite sprite = new Sprite(50, 0, 0, HojaSprites.ejemplo);
+	public static Sprite sprite = new Sprite(50, 0, 0, HojaSprites.ejemplo);			/// SECCION DEL SPRITE A USAR
 	//fin de la coleccion
 	
 	public Sprite(final int lado, final int columna, final int fila, final HojaSprites hoja)
