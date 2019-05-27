@@ -2,6 +2,7 @@ package juego;
 
 import java.awt.BorderLayout;
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
@@ -27,31 +28,32 @@ public class Juego extends Canvas implements Runnable {
 
 	private static int fps = 0;
 	private static int aps = 0;
-	
-	private static int x=0;
-	private static int y=0;
+
+	private static int x = 0;
+	private static int y = 0;
 
 	private static JFrame ventana;
 	private static Thread thread;
 	private static Teclado teclado;
 	private static Pantalla pantalla;
-	
-	private static BufferedImage imagen = new BufferedImage(ANCHO, 
-			ALTO, BufferedImage.TYPE_INT_RGB);
-	private static int [] pixeles = ((DataBufferInt) 
-			imagen.getRaster().getDataBuffer()).getData();			// Contamos los pixeles
-	
-	public static final ImageIcon icono= new ImageIcon(Juego.class.getResource("/icono/Velez.png"));	// con esta funcion añadimos el icono
-	
+
+	private static BufferedImage imagen = new BufferedImage(ANCHO, ALTO, BufferedImage.TYPE_INT_RGB);
+	private static int[] pixeles = ((DataBufferInt) imagen.getRaster().getDataBuffer()).getData(); // Contamos los
+																									// pixeles
+
+	public static final ImageIcon icono = new ImageIcon(Juego.class.getResource("/icono/Velez.png")); // con esta
+																										// funcion
+																										// añadimos el
+																										// icono
 
 	private Juego() {
-		setPreferredSize(new Dimension(ANCHO, ALTO));		// creamos la pantalla que corre el juego
+		setPreferredSize(new Dimension(ANCHO, ALTO)); // creamos la pantalla que corre el juego
 
-		pantalla = new Pantalla(ANCHO, ALTO);			
-		
+		pantalla = new Pantalla(ANCHO, ALTO);
+
 		teclado = new Teclado();
 		addKeyListener(teclado);
-		
+
 		ventana = new JFrame(NOMBRE);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setResizable(false);
@@ -80,66 +82,63 @@ public class Juego extends Canvas implements Runnable {
 		enFuncionamiento = false;
 
 		try {
-			thread.join(); 	// cierro el thread con las excepciones
+			thread.join(); // cierro el thread con las excepciones
 		} catch (InterruptedException e) {
-							
+
 			e.printStackTrace();
 		}
 	}
 
 	private void actualizar() {
 		teclado.actualizar();
-		
-		if(teclado.arriba)
-		{
+
+		if (teclado.arriba) {
 			System.out.println("moviendo arriba");
 			y++;
 		}
-		if(teclado.abajo)
-		{
+		if (teclado.abajo) {
 			System.out.println("moviendo abajo");
 			y--;
 		}
-		if(teclado.izquierda)
-		{
+		if (teclado.izquierda) {
 			System.out.println("moviendo izquierda");
 			x++;
 		}
-		if(teclado.derecha)
-		{
+		if (teclado.derecha) {
 			System.out.println("moviendo derecha");
 			x--;
 		}
-		
+
 		aps++;
 	}
 
 	private void mostrar() {
-		BufferStrategy estrategia= getBufferStrategy();
-		
-		if (estrategia == null)
-		{
+		BufferStrategy estrategia = getBufferStrategy();
+
+		if (estrategia == null) {
 			createBufferStrategy(3);
 			return;
 		}
-		
+
 		pantalla.limpiar();
 		pantalla.mostrar(x, y);
-		
+
 		System.arraycopy(pantalla.pixeles, 0, pixeles, 0, pixeles.length);
-		
+
 //		for (int i = 0; i < pixeles.length; i++)
 //		{
 //			pixeles[i]=pantalla.pixeles[i];
 //		}
-		
+
 		Graphics g = estrategia.getDrawGraphics();
-		
+
 		g.drawImage(imagen, 0, 0, getWidth(), getHeight(), null);
+		g.setColor(Color.white);
+		g.fillRect(ANCHO / 2, ALTO / 2, 32, 32);
 		g.dispose();
-		
+
 		estrategia.show();
-		
+
 		fps++;
 	}
 
@@ -153,10 +152,10 @@ public class Juego extends Canvas implements Runnable {
 		long referenciaContador = System.nanoTime();
 
 		double tiempoTranscurrido;
-		double delta = 0; 	// cantidad de tiempo transcurrido hasta actualizacion
+		double delta = 0; // cantidad de tiempo transcurrido hasta actualizacion
 
-		requestFocus();		// autoenfocar el teclado en la ventana
-		
+		requestFocus(); // autoenfocar el teclado en la ventana
+
 		while (enFuncionamiento) {
 			final long inicioBucle = System.nanoTime();
 
@@ -171,9 +170,8 @@ public class Juego extends Canvas implements Runnable {
 				actualizar();
 				delta--;
 			}
-			
+
 			mostrar();
-		
 
 			if (System.nanoTime() - referenciaContador > NS_POR_SEGUNDO) {
 				ventana.setTitle(NOMBRE + " [APS]: " + aps + " // [FPS]: " + fps);

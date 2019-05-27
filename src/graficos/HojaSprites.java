@@ -9,23 +9,22 @@ public class HojaSprites {
 	private final int ancho;
 	private final int alto;
 	public final int[] pixeles;
-	
-	//coleccion de hojas de sprites
-	public static HojaSprites ejemplo = new HojaSprites("/texturas/SpritePrueba.png",500,500);	// CARGAR LA IMAGEN
-	
-	//fin de la coleccion
-	
-	public HojaSprites(final String ruta, final int ancho, final int alto)
-	{
+
+	// coleccion de hojas de sprites
+	public static HojaSprites ejemplo = new HojaSprites("/texturas/SpritePrueba.png", 160, 96); // CARGAR LA IMAGEN
+
+	// fin de la coleccion
+
+	public HojaSprites(final String ruta, final int ancho, final int alto) {
 		this.ancho = ancho;
 		this.alto = alto;
-		
-		pixeles = new int [ancho * alto];
-		
+
+		pixeles = new int[ancho * alto];
+
 		BufferedImage imagen;
 		try {
 			imagen = ImageIO.read(HojaSprites.class.getResource(ruta));
-			
+
 			imagen.getRGB(0, 0, ancho, alto, pixeles, 0, ancho);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -33,9 +32,8 @@ public class HojaSprites {
 		}
 
 	}
-	
-	public int obtenerAncho()
-	{
+
+	public int obtenerAncho() {
 		return ancho;
 	}
 
