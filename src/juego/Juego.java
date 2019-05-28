@@ -27,6 +27,8 @@ public class Juego extends Canvas implements Runnable {
 	private static volatile boolean enFuncionamiento = false;
 
 	private static final String NOMBRE = "Juego";
+	private static String CONTADOR_APS = "";
+	private static String CONTADOR_FPS = "";
 
 	private static int fps = 0;
 	private static int aps = 0;
@@ -63,6 +65,7 @@ public class Juego extends Canvas implements Runnable {
 		ventana = new JFrame(NOMBRE);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setResizable(false);
+		ventana.setUndecorated(true);
 		ventana.setLayout(new BorderLayout());
 		ventana.setIconImage(icono.getImage());
 		ventana.add(this, BorderLayout.CENTER);
@@ -114,6 +117,9 @@ public class Juego extends Canvas implements Runnable {
 			System.out.println("moviendo derecha");
 			x++;
 		}
+		if (teclado.salir) {
+			System.exit(0);
+		}
 
 		aps++;
 	}
@@ -142,6 +148,8 @@ public class Juego extends Canvas implements Runnable {
 		g.drawImage(imagen, 0, 0, getWidth(), getHeight(), null);
 		g.setColor(Color.white);
 		g.fillRect(ANCHO / 2, ALTO / 2, 25, 25);
+		g.drawString(CONTADOR_APS, 10, 20);
+		g.drawString(CONTADOR_FPS, 10, 35);
 		g.dispose();
 
 		estrategia.show();
@@ -181,7 +189,9 @@ public class Juego extends Canvas implements Runnable {
 			mostrar();
 
 			if (System.nanoTime() - referenciaContador > NS_POR_SEGUNDO) {
-				ventana.setTitle(NOMBRE + " [APS]: " + aps + " // [FPS]: " + fps);
+				CONTADOR_APS = "APS : " + aps;
+				CONTADOR_FPS = "FPS : " + fps;
+
 				aps = 0;
 				fps = 0;
 				referenciaContador = System.nanoTime();
