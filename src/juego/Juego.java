@@ -14,6 +14,8 @@ import javax.swing.JFrame;
 
 import control.Teclado;
 import graficos.Pantalla;
+import mapa.Mapa;
+import mapa.MapaGenerado;
 
 public class Juego extends Canvas implements Runnable {
 
@@ -37,6 +39,8 @@ public class Juego extends Canvas implements Runnable {
 	private static Teclado teclado;
 	private static Pantalla pantalla;
 
+	private static Mapa mapa;
+
 	private static BufferedImage imagen = new BufferedImage(ANCHO, ALTO, BufferedImage.TYPE_INT_RGB);
 	private static int[] pixeles = ((DataBufferInt) imagen.getRaster().getDataBuffer()).getData(); // Contamos los
 																									// pixeles
@@ -50,6 +54,8 @@ public class Juego extends Canvas implements Runnable {
 		setPreferredSize(new Dimension(ANCHO, ALTO)); // creamos la pantalla que corre el juego
 
 		pantalla = new Pantalla(ANCHO, ALTO);
+
+		mapa = new MapaGenerado(128, 128);// clases abstractas - substitucion
 
 		teclado = new Teclado();
 		addKeyListener(teclado);
@@ -94,19 +100,19 @@ public class Juego extends Canvas implements Runnable {
 
 		if (teclado.arriba) {
 			System.out.println("moviendo arriba");
-			y++;
+			y--;
 		}
 		if (teclado.abajo) {
 			System.out.println("moviendo abajo");
-			y--;
+			y++;
 		}
 		if (teclado.izquierda) {
 			System.out.println("moviendo izquierda");
-			x++;
+			x--;
 		}
 		if (teclado.derecha) {
 			System.out.println("moviendo derecha");
-			x--;
+			x++;
 		}
 
 		aps++;
@@ -121,7 +127,8 @@ public class Juego extends Canvas implements Runnable {
 		}
 
 		pantalla.limpiar();
-		pantalla.mostrar(x, y);
+//		pantalla.mostrar(x, y);
+		mapa.mostrar(x, y, pantalla);
 
 		System.arraycopy(pantalla.pixeles, 0, pixeles, 0, pixeles.length);
 
@@ -134,7 +141,7 @@ public class Juego extends Canvas implements Runnable {
 
 		g.drawImage(imagen, 0, 0, getWidth(), getHeight(), null);
 		g.setColor(Color.white);
-		g.fillRect(ANCHO / 2, ALTO / 2, 32, 32);
+		g.fillRect(ANCHO / 2, ALTO / 2, 25, 25);
 		g.dispose();
 
 		estrategia.show();
@@ -167,6 +174,7 @@ public class Juego extends Canvas implements Runnable {
 
 			while (delta >= 1) // actualiza el juego cuando delta es uno
 			{
+
 				actualizar();
 				delta--;
 			}
