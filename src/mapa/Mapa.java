@@ -7,13 +7,13 @@ public abstract class Mapa {
 	protected int ancho;
 	protected int alto;
 
-	protected int[] tiles;
+	protected int[] cuadros;
 
 	public Mapa(int ancho, int alto) {
 		this.ancho = ancho;
 		this.alto = alto;
 
-		tiles = new int[ancho * alto];
+		cuadros = new int[ancho * alto];
 		generarMapa();
 	}
 
@@ -35,6 +35,8 @@ public abstract class Mapa {
 
 	public void mostrar(final int compensacionX, final int compensacionY, final Pantalla pantalla) { //
 
+		pantalla.estableceDiferencia(compensacionX, compensacionY);
+
 		int o = compensacionX / 25; // la parte mas a la izquierda de la pantalla
 		int e = (compensacionX + pantalla.obtenAncho()) / 25; // la parte mas a la derecha de la pantalla
 		int n = compensacionY / 25; // la parte mas abajo de la pantalla
@@ -50,8 +52,11 @@ public abstract class Mapa {
 	}
 
 	public Cuadro obtenCuadro(final int x, final int y) {
-		switch (tiles[x + y * ancho]) {
-		case 0:
+		if (x < 0 || y < 0 || x >= ancho || y >= ancho) {
+			return Cuadro.VACIO;
+		}
+		switch (cuadros[x + y * ancho]) {
+		case 1:
 			return Cuadro.GENERICO;
 
 		default:

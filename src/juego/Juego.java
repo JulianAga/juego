@@ -174,7 +174,6 @@ public class Juego extends Canvas implements Runnable {
 
 			while (delta >= 1) // actualiza el juego cuando delta es uno
 			{
-
 				actualizar();
 				delta--;
 			}
