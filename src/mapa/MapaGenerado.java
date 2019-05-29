@@ -11,10 +11,10 @@ public class MapaGenerado extends Mapa {
 	}
 
 	@Override
-	protected void generarMapa() {
+	protected void generarMapa() { // lanza un numero aleatorio y eso determina que tipo de sprite será
 		for (int y = 0; y < alto; y++) {
 			for (int x = 0; x < ancho; x++) {
-				cuadros[x + y * ancho] = aleatorio.nextInt(3);
+				cuadros[x + y * ancho] = aleatorio.nextInt(3);// cantidad de distintos sprites a generar
 			}
 		}
 	}

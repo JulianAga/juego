@@ -11,7 +11,7 @@ public class HojaSprites {
 	public final int[] pixeles;
 
 	// coleccion de hojas de sprites
-	public static HojaSprites ejemplo = new HojaSprites("/texturas/SpritePrueba.png", 160, 96); // CARGAR LA IMAGEN
+	public static HojaSprites ejemplo = new HojaSprites("/texturas/SpritePrueba.png", 320, 320); // CARGAR LA IMAGEN
 
 	// fin de la coleccion
 

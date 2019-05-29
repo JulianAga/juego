@@ -147,7 +147,7 @@ public class Juego extends Canvas implements Runnable {
 
 		g.drawImage(imagen, 0, 0, getWidth(), getHeight(), null);
 		g.setColor(Color.white);
-		g.fillRect(ANCHO / 2, ALTO / 2, 25, 25);
+		g.fillRect(ANCHO / 2, ALTO / 2, 32, 32);// espacio que representa al jugador
 		g.drawString(CONTADOR_APS, 10, 20);
 		g.drawString(CONTADOR_FPS, 10, 35);
 		g.dispose();

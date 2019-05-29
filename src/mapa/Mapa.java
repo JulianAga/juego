@@ -37,10 +37,11 @@ public abstract class Mapa {
 
 		pantalla.estableceDiferencia(compensacionX, compensacionY);
 
-		int o = compensacionX / 25; // la parte mas a la izquierda de la pantalla
-		int e = (compensacionX + pantalla.obtenAncho()) / 25; // la parte mas a la derecha de la pantalla
-		int n = compensacionY / 25; // la parte mas abajo de la pantalla
-		int s = (compensacionY + pantalla.obtenAlto()) / 25; // la parte mas arriba de la pantalla
+		int o = compensacionX >> 5; // la parte mas a la izquierda de la pantalla
+		int e = (compensacionX + pantalla.obtenAncho()) >> 5; // la parte mas a la derecha de la pantalla
+		int n = compensacionY >> 5; // la parte mas abajo de la pantalla
+		int s = (compensacionY + pantalla.obtenAlto()) >> 5; // la parte mas arriba de la pantalla /BITSHIFTING >> 5 ES
+																// LO MISMO QUE DIVIDIR POR 32
 
 		for (int y = n; y < s; y++) {
 
@@ -57,7 +58,11 @@ public abstract class Mapa {
 		}
 		switch (cuadros[x + y * ancho]) {
 		case 1:
-			return Cuadro.GENERICO;
+			return Cuadro.ASFALTO;
+		case 2:
+			return Cuadro.ARENA;
+		case 3:
+			return Cuadro.BORDE_CARRETERA;
 
 		default:
 			return Cuadro.VACIO;

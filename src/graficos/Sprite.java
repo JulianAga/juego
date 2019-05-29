@@ -11,8 +11,19 @@ public final class Sprite {
 	private HojaSprites hoja;
 
 	// coleccion de sprites
-	public static final Sprite GENERICO = new Sprite(25, 0, 0, HojaSprites.ejemplo); /// SECCION DEL SPRITE A USAR
-	public static final Sprite VACIO = new Sprite(25, 0);
+	public static final Sprite ASFALTO = new Sprite(32, 0, 0, HojaSprites.ejemplo);
+	public static final Sprite ARENA = new Sprite(32, 1, 0, HojaSprites.ejemplo);
+	public static final Sprite BORDE_CARRETERA = new Sprite(32, 2, 0, HojaSprites.ejemplo);
+	public static final Sprite CENTRO_CARRETERA = new Sprite(32, 3, 0, HojaSprites.ejemplo);
+	public static final Sprite ESQUINA_CARRETERA = new Sprite(32, 4, 0, HojaSprites.ejemplo);
+	public static final Sprite PARED_PIEDRA = new Sprite(32, 5, 0, HojaSprites.ejemplo);
+	public static final Sprite PARED_PIEDRA_INFERIOR = new Sprite(32, 6, 0, HojaSprites.ejemplo);
+	public static final Sprite PARED_PIEDRA_CARRETERA = new Sprite(32, 0, 3, HojaSprites.ejemplo);
+	public static final Sprite PUERTA_SUPERIOR_IZQUIERDA = new Sprite(32, 7, 0, HojaSprites.ejemplo);
+	public static final Sprite PUERTA_INTERMEDIA_IZQUIERDA = new Sprite(32, 7, 1, HojaSprites.ejemplo);
+	public static final Sprite PUERTA_INFERIOR = new Sprite(32, 9, 0, HojaSprites.ejemplo);
+	public static final Sprite OXIDO = new Sprite(32, 9, 0, HojaSprites.ejemplo);
+	public static final Sprite VACIO = new Sprite(32, 0);
 	// fin de la coleccion
 
 	public Sprite(final int lado, final int columna, final int fila, final HojaSprites hoja) {

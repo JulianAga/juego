@@ -56,7 +56,8 @@ public final class Pantalla {
 //	}
 //	// Fin temporal
 
-	public void mostrarCuadro(int compensacionX, int compensacionY, Cuadro cuadro) {
+	public void mostrarCuadro(int compensacionX, int compensacionY, Cuadro cuadro) { // va dibujando los sprites en la
+																						// pantalla
 		compensacionX -= diferenciaX;
 		compensacionY -= diferenciaY;
 
@@ -64,14 +65,27 @@ public final class Pantalla {
 			int posicionY = y + compensacionY;
 			for (int x = 0; x < cuadro.sprite.obtenLado(); x++) {
 				int posicionX = x + compensacionX;
-				if (posicionX < -cuadro.sprite.obtenLado() || posicionX >= ancho || posicionY < 0
-						|| posicionY >= alto) {
+				if (posicionX < -cuadro.sprite.obtenLado() || posicionX >= ancho - cuadro.sprite.obtenLado()
+						|| posicionY < cuadro.sprite.obtenLado() || posicionY >= alto - cuadro.sprite.obtenLado()) { // limita
+																														// el
+																														// dibujo
+																														// de
+																														// cuadros
+					// al tamaño de la pantalla
 					break;
 				}
 				if (posicionX < 0) {
 					posicionX = 0;
 				}
-				pixeles[posicionX + posicionY * ancho] = cuadro.sprite.pixeles[x + y * cuadro.sprite.obtenLado()];
+				pixeles[posicionX + posicionY * ancho] = cuadro.sprite.pixeles[x + y * cuadro.sprite.obtenLado()]; // pasa
+																													// el
+																													// cuadro
+																													// a
+																													// la
+																													// posicion
+																													// de
+																													// la
+																													// pantalla
 
 			}
 		}
