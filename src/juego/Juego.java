@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 import control.Teclado;
 import graficos.Pantalla;
 import mapa.Mapa;
-import mapa.MapaGenerado;
+import mapa.MapaCargado;
 
 public class Juego extends Canvas implements Runnable {
 
@@ -26,7 +26,7 @@ public class Juego extends Canvas implements Runnable {
 
 	private static volatile boolean enFuncionamiento = false;
 
-	private static final String NOMBRE = "Juego";
+	private static final String NOMBRE = "ROL";
 	private static String CONTADOR_APS = "";
 	private static String CONTADOR_FPS = "";
 
@@ -57,7 +57,8 @@ public class Juego extends Canvas implements Runnable {
 
 		pantalla = new Pantalla(ANCHO, ALTO);
 
-		mapa = new MapaGenerado(128, 128);// clases abstractas - substitucion
+//		mapa = new MapaGenerado(128, 128);// clases abstractas - substitucion
+		mapa = new MapaCargado("/mapas/MapaDesierto.png");
 
 		teclado = new Teclado();
 		addKeyListener(teclado);
@@ -132,7 +133,7 @@ public class Juego extends Canvas implements Runnable {
 			return;
 		}
 
-		pantalla.limpiar();
+//		dwpantalla.limpiar();
 //		pantalla.mostrar(x, y);
 		mapa.mostrar(x, y, pantalla);
 
