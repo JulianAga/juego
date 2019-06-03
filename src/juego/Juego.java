@@ -13,7 +13,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import control.Teclado;
+import entes.criaturas.Jugador;
 import graficos.Pantalla;
+import graficos.Sprite;
 import mapa.Mapa;
 import mapa.MapaCargado;
 
@@ -33,15 +35,13 @@ public class Juego extends Canvas implements Runnable {
 	private static int fps = 0;
 	private static int aps = 0;
 
-	private static int x = 0;
-	private static int y = 0;
-
 	private static JFrame ventana;
 	private static Thread thread;
 	private static Teclado teclado;
 	private static Pantalla pantalla;
 
 	private static Mapa mapa;
+	private static Jugador jugador;
 
 	private static BufferedImage imagen = new BufferedImage(ANCHO, ALTO, BufferedImage.TYPE_INT_RGB);
 	private static int[] pixeles = ((DataBufferInt) imagen.getRaster().getDataBuffer()).getData(); // Contamos los
@@ -53,32 +53,34 @@ public class Juego extends Canvas implements Runnable {
 																										// icono
 
 	private Juego() {
-		setPreferredSize(new Dimension(ANCHO, ALTO)); // creamos la pantalla que corre el juego
+		setPreferredSize(new Dimension(ANCHO, ALTO));
 
 		pantalla = new Pantalla(ANCHO, ALTO);
 
-//		mapa = new MapaGenerado(128, 128);// clases abstractas - substitucion
-		mapa = new MapaCargado("/mapas/MapaDesierto.png");
+		// mapa = new MapaGenerado(128, 128);
 
 		teclado = new Teclado();
 		addKeyListener(teclado);
 
+		mapa = new MapaCargado("/mapas/mapaDesierto.png");
+		jugador = new Jugador(teclado, Sprite.ARRIBA0, 225, 225);
+
 		ventana = new JFrame(NOMBRE);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setResizable(false);
-		ventana.setUndecorated(true);
-		ventana.setLayout(new BorderLayout());
 		ventana.setIconImage(icono.getImage());
+		ventana.setLayout(new BorderLayout());
 		ventana.add(this, BorderLayout.CENTER);
+		ventana.setUndecorated(true);
 		ventana.pack();
 		ventana.setLocationRelativeTo(null);
 		ventana.setVisible(true);
-
 	}
 
 	public static void main(String[] args) {
 		Juego juego = new Juego();
 		juego.iniciar();
+
 	}
 
 	private synchronized void iniciar() {
@@ -92,9 +94,8 @@ public class Juego extends Canvas implements Runnable {
 		enFuncionamiento = false;
 
 		try {
-			thread.join(); // cierro el thread con las excepciones
+			thread.join();
 		} catch (InterruptedException e) {
-
 			e.printStackTrace();
 		}
 	}
@@ -102,22 +103,8 @@ public class Juego extends Canvas implements Runnable {
 	private void actualizar() {
 		teclado.actualizar();
 
-		if (teclado.arriba) {
-			System.out.println("moviendo arriba");
-			y--;
-		}
-		if (teclado.abajo) {
-			System.out.println("moviendo abajo");
-			y++;
-		}
-		if (teclado.izquierda) {
-			System.out.println("moviendo izquierda");
-			x--;
-		}
-		if (teclado.derecha) {
-			System.out.println("moviendo derecha");
-			x++;
-		}
+		jugador.actualizar();
+
 		if (teclado.salir) {
 			System.exit(0);
 		}
@@ -133,24 +120,26 @@ public class Juego extends Canvas implements Runnable {
 			return;
 		}
 
-//		dwpantalla.limpiar();
-//		pantalla.mostrar(x, y);
-		mapa.mostrar(x, y, pantalla);
+		// pantalla.limpiar();
+		mapa.mostrar(jugador.obtenerPosicionX() - pantalla.obtenAncho() / 2 + jugador.obtenSprite().obtenLado() / 2,
+				jugador.obtenerPosicionY() - pantalla.obtenAlto() / 2 + jugador.obtenSprite().obtenLado() / 2,
+				pantalla);
+		jugador.mostrar(pantalla);
 
 		System.arraycopy(pantalla.pixeles, 0, pixeles, 0, pixeles.length);
 
-//		for (int i = 0; i < pixeles.length; i++)
-//		{
-//			pixeles[i]=pantalla.pixeles[i];
-//		}
+		// for (int i = 0; i < pixeles.length; i++) {
+		// pixeles[i] = pantalla.pixeles[i];
+		// }
 
 		Graphics g = estrategia.getDrawGraphics();
 
 		g.drawImage(imagen, 0, 0, getWidth(), getHeight(), null);
-		g.setColor(Color.white);
-		g.fillRect(ANCHO / 2, ALTO / 2, 32, 32);// espacio que representa al jugador
+		g.setColor(Color.red);
 		g.drawString(CONTADOR_APS, 10, 20);
 		g.drawString(CONTADOR_FPS, 10, 35);
+		g.drawString("X. " + jugador.obtenerPosicionX(), 10, 50);
+		g.drawString("Y. " + jugador.obtenerPosicionY(), 10, 65);
 		g.dispose();
 
 		estrategia.show();

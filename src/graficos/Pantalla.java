@@ -1,5 +1,6 @@
 package graficos;
 
+import entes.criaturas.Jugador;
 import mapa.tile.Cuadro;
 
 public final class Pantalla {
@@ -10,13 +11,6 @@ public final class Pantalla {
 	private int diferenciaY;
 
 	public final int[] pixeles;
-
-//	// temporal
-//
-//	private final static int LADO_SPRITE = 25;
-//	private final static int MASCARA_SPRITE = LADO_SPRITE - 1;
-//
-//	// fin temporal
 
 	public Pantalla(final int ancho, final int alto) {
 		this.ancho = ancho;
@@ -30,31 +24,6 @@ public final class Pantalla {
 			pixeles[i] = 0;
 		}
 	}
-
-//	// temporal
-//	public void mostrar(final int compensacionX, final int compensacionY) {
-//		for (int y = 0; y < alto; y++) {
-//			int posicionY = y + compensacionY;
-//			if (posicionY < 0 || posicionY >= alto) {
-//				continue;
-//			}
-//
-//			for (int x = 0; x < ancho; x++) {
-//				int posicionX = x + compensacionX;
-//
-//				if (posicionX < 0 || posicionX >= ancho) {
-//					continue;
-//				}
-//
-//				// codigo para redibujar pantalla
-//
-//				pixeles[posicionX + posicionY * ancho] = Sprite.GENERICO.pixeles[(x
-//						& MASCARA_SPRITE + (y & MASCARA_SPRITE) * LADO_SPRITE)];
-//
-//			}
-//		}
-//	}
-//	// Fin temporal
 
 	public void mostrarCuadro(int compensacionX, int compensacionY, Cuadro cuadro) { // va dibujando los sprites en la
 																						// pantalla
@@ -87,6 +56,32 @@ public final class Pantalla {
 																													// la
 																													// pantalla
 
+			}
+		}
+	}
+
+	public void mostrarJugador(int compensacionX, int compensacionY, Jugador jugador) {
+		compensacionX -= diferenciaX;
+		compensacionY -= diferenciaY;
+
+		for (int y = 0; y < jugador.obtenSprite().obtenLado(); y++) {
+			int posicionY = y + compensacionY;
+			for (int x = 0; x < jugador.obtenSprite().obtenLado(); x++) {
+				int posicionX = x + compensacionX;
+				if (posicionX < -jugador.obtenSprite().obtenLado() || posicionX >= ancho || posicionY < 0
+						|| posicionY >= alto) {
+					break;
+				}
+				if (posicionX < 0) {
+					posicionX = 0;
+				}
+				// pixeles[posicionX + posicionY * ancho] =
+				// jugador.obtenSprite().pixeles[x + y
+				// * jugador.obtenSprite().obtenLado()];
+				int colorPixelJugador = jugador.obtenSprite().pixeles[x + y * jugador.obtenSprite().obtenLado()];
+				if (colorPixelJugador != 0xffffffff) {
+					pixeles[posicionX + posicionY * ancho] = colorPixelJugador;
+				}
 			}
 		}
 	}
