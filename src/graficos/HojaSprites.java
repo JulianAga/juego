@@ -12,7 +12,7 @@ public class HojaSprites {
 
 	// coleccion de hojas de sprites
 	public static HojaSprites ejemplo = new HojaSprites("/texturas/SpritePrueba.png", 320, 320); // CARGAR LA IMAGEN
-	public static HojaSprites jugador = new HojaSprites("/texturas/jugador.png", 820, 866);
+	public static HojaSprites jugador = new HojaSprites("/texturas/jugador.png", 128, 96);
 
 	// fin de la coleccion
 

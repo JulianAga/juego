@@ -15,7 +15,7 @@ public final class Sprite {
 	public static final Sprite ABAJO1 = new Sprite(32, 0, 1, 0, HojaSprites.jugador);
 	public static final Sprite ABAJO2 = new Sprite(32, 0, 2, 0, HojaSprites.jugador);
 
-	public static final Sprite ARRIBA0 = new Sprite(32, 0, 7, 0, HojaSprites.jugador);
+	public static final Sprite ARRIBA0 = new Sprite(32, 1, 0, 0, HojaSprites.jugador);
 	public static final Sprite ARRIBA1 = new Sprite(32, 1, 1, 0, HojaSprites.jugador);
 	public static final Sprite ARRIBA2 = new Sprite(32, 1, 2, 0, HojaSprites.jugador);
 
