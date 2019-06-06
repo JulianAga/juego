@@ -29,7 +29,7 @@ public final class Sprite {
 	// Fin de la colección
 
 	// Colección de sprites MAPA
-	public static final Sprite VACIO = new Sprite(32, 0);
+	public static final Sprite VACIO = new Sprite(32, 1, 2, 0, HojaSprites.ejemplo);
 	public static final Sprite ASFALTO = new Sprite(32, 0, 0, 0, HojaSprites.ejemplo);
 	public static final Sprite ARENA = new Sprite(32, 1, 0, 0, HojaSprites.ejemplo);
 	public static final Sprite BORDE_CARRETERA_IZQUIERDO = new Sprite(32, 2, 0, 0, HojaSprites.ejemplo);
