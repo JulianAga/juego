@@ -10,8 +10,6 @@ public class Jugador extends Criatura {
 
 	private int animacion;
 
-	private int vida = 100;
-
 	public Jugador(Mapa mapa, Teclado teclado, Sprite sprite) {
 		this.mapa = mapa;
 		this.teclado = teclado;
@@ -24,6 +22,7 @@ public class Jugador extends Criatura {
 		this.sprite = sprite;
 		this.x = posicionX;
 		this.y = posicionY;
+		establecerVida(100);
 	}
 
 	@Override
@@ -122,6 +121,9 @@ public class Jugador extends Criatura {
 				}
 			}
 		}
+
+		perderVida();
+		eliminar();
 	}
 
 	public int obtenerVida() {
@@ -130,5 +132,18 @@ public class Jugador extends Criatura {
 
 	public void mostrar(Pantalla pantalla) {
 		pantalla.mostrarJugador(x, y, this);
+	}
+
+	public void perderVida() {
+		if (direccion == 'e')
+			vida--;
+	}
+
+	@Override
+	public void eliminar() {
+
+		if (vida == 0) {
+			System.exit(0);
+		}
 	}
 }

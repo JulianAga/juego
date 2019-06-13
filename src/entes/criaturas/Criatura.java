@@ -7,6 +7,11 @@ public abstract class Criatura extends Ente {
 	protected Sprite sprite;
 	protected char direccion = 'n';
 	protected boolean enMovimiento = false;
+	public int vida;
+
+	public void establecerVida(int vida) {
+		this.vida = vida;
+	}
 
 	@Override
 	public void actualizar() {
@@ -54,6 +59,7 @@ public abstract class Criatura extends Ente {
 																														// del
 																														// mapa
 																														// verticalmente
+
 					modificarPosicionY(0);
 				} else {
 					modificarPosicionY(desplazamientoY);
