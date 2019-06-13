@@ -110,9 +110,9 @@ public class Jugador extends Criatura {
 		if (direccion == 'e') {
 			sprite = Sprite.DERECHA0;
 			if (enMovimiento) {
+			} else if (resto > 20 && resto <= 30) {
 				if (resto > 10 && resto <= 20) {
 					sprite = Sprite.DERECHA1;
-				} else if (resto > 20 && resto <= 30) {
 					sprite = Sprite.DERECHA0;
 				} else if (resto > 30) {
 					sprite = Sprite.DERECHA2;
@@ -122,7 +122,7 @@ public class Jugador extends Criatura {
 			}
 		}
 
-		perderVida();
+		// perderVida();
 		eliminar();
 	}
 
@@ -135,8 +135,8 @@ public class Jugador extends Criatura {
 	}
 
 	public void perderVida() {
-		if ((x==123) || (y==123))
-			vida--;
+
+		vida--;
 	}
 
 	@Override

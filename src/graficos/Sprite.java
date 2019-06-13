@@ -28,6 +28,8 @@ public final class Sprite {
 	public static final Sprite IZQUIERDA2 = new Sprite(32, 3, 2, 0, HojaSprites.jugador);
 	// Fin de la colección
 
+	public static final Sprite STANDING = new Sprite(32, 0, 0, 1, HojaSprites.enemigo);
+
 	// Colección de sprites MAPA
 	public static final Sprite VACIO = new Sprite(32, 1, 2, 0, HojaSprites.ejemplo);
 	public static final Sprite ASFALTO = new Sprite(32, 0, 0, 0, HojaSprites.ejemplo);
