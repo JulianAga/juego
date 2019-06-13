@@ -17,7 +17,6 @@ import control.Teclado;
 import entes.criaturas.Jugador;
 import graficos.Pantalla;
 import graficos.Sprite;
-import interfazUsuario.Menu;
 import mapa.Mapa;
 import mapa.MapaCargado;
 
@@ -54,7 +53,7 @@ public class Juego extends Canvas implements Runnable {
 																										// añadimos el
 																										// icono
 //
-	Menu menu = new Menu(jugador);
+	
 
 	private Juego() {
 		setPreferredSize(new Dimension(ANCHO, ALTO));
@@ -70,8 +69,6 @@ public class Juego extends Canvas implements Runnable {
 
 		jugador = new Jugador(mapa, teclado, Sprite.ARRIBA0, 225, 225);
 //
-		menu = new Menu(jugador);
-
 		ventana = new JFrame(NOMBRE);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setResizable(false);
@@ -156,10 +153,6 @@ public class Juego extends Canvas implements Runnable {
 		estrategia.show();
 
 		fps++;
-	}
-
-	public void dibujar(Graphics g) {
-		menu.dibujar(g, jugador);
 	}
 
 	@Override
