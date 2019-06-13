@@ -5,6 +5,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
@@ -16,6 +17,7 @@ import control.Teclado;
 import entes.criaturas.Jugador;
 import graficos.Pantalla;
 import graficos.Sprite;
+import interfazUsuario.Menu;
 import mapa.Mapa;
 import mapa.MapaCargado;
 
@@ -51,6 +53,8 @@ public class Juego extends Canvas implements Runnable {
 																										// funcion
 																										// añadimos el
 																										// icono
+//
+	Menu menu = new Menu(jugador);
 
 	private Juego() {
 		setPreferredSize(new Dimension(ANCHO, ALTO));
@@ -65,6 +69,8 @@ public class Juego extends Canvas implements Runnable {
 		mapa = new MapaCargado("/mapas/mapaDesierto.png");
 
 		jugador = new Jugador(mapa, teclado, Sprite.ARRIBA0, 225, 225);
+//
+		menu = new Menu(jugador);
 
 		ventana = new JFrame(NOMBRE);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -76,6 +82,7 @@ public class Juego extends Canvas implements Runnable {
 		ventana.pack();
 		ventana.setLocationRelativeTo(null);
 		ventana.setVisible(true);
+
 	}
 
 	public static void main(String[] args) {
@@ -132,20 +139,27 @@ public class Juego extends Canvas implements Runnable {
 		// for (int i = 0; i < pixeles.length; i++) {
 		// pixeles[i] = pantalla.pixeles[i];
 		// }
+//		Graphics g = estrategia.getDrawGraphics();
 
-		Graphics g = estrategia.getDrawGraphics();
+		Graphics2D g = (Graphics2D) estrategia.getDrawGraphics();
 
 		g.drawImage(imagen, 0, 0, getWidth(), getHeight(), null);
 		g.setColor(Color.red);
+
 		g.drawString(CONTADOR_APS, 10, 20);
 		g.drawString(CONTADOR_FPS, 10, 35);
 		g.drawString("X. " + jugador.obtenerPosicionX(), 10, 50);
 		g.drawString("Y. " + jugador.obtenerPosicionY(), 10, 65);
+		g.drawString("Vida. " + jugador.obtenerVida(), 10, 75);
 		g.dispose();
 
 		estrategia.show();
 
 		fps++;
+	}
+
+	public void dibujar(Graphics g) {
+		menu.dibujar(g, jugador);
 	}
 
 	@Override
