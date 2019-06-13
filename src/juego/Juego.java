@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import control.Teclado;
+import entes.criaturas.Enemigo;
 import entes.criaturas.Jugador;
 import graficos.Pantalla;
 import graficos.Sprite;
@@ -43,6 +44,7 @@ public class Juego extends Canvas implements Runnable {
 
 	private static Mapa mapa;
 	private static Jugador jugador;
+	private static Enemigo enemigo;
 
 	private static BufferedImage imagen = new BufferedImage(ANCHO, ALTO, BufferedImage.TYPE_INT_RGB);
 	private static int[] pixeles = ((DataBufferInt) imagen.getRaster().getDataBuffer()).getData(); // Contamos los
@@ -68,7 +70,11 @@ public class Juego extends Canvas implements Runnable {
 		mapa = new MapaCargado("/mapas/mapaDesierto.png");
 
 		jugador = new Jugador(mapa, teclado, Sprite.ARRIBA0, 225, 225);
-//
+		
+		enemigo = new Enemigo(mapa, Sprite.ABAJO0,123,123);
+		
+		
+		//
 		ventana = new JFrame(NOMBRE);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setResizable(false);
@@ -130,6 +136,7 @@ public class Juego extends Canvas implements Runnable {
 				jugador.obtenerPosicionY() - pantalla.obtenAlto() / 2 + jugador.obtenSprite().obtenLado() / 2,
 				pantalla);
 		jugador.mostrar(pantalla);
+		enemigo.mostrar(pantalla);
 
 		System.arraycopy(pantalla.pixeles, 0, pixeles, 0, pixeles.length);
 

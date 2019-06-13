@@ -135,7 +135,7 @@ public class Jugador extends Criatura {
 	}
 
 	public void perderVida() {
-		if (direccion == 'e')
+		if ((x==123) || (y==123))
 			vida--;
 	}
 

@@ -1,5 +1,6 @@
 package graficos;
 
+import entes.criaturas.Enemigo;
 import entes.criaturas.Jugador;
 import mapa.tile.Cuadro;
 
@@ -85,6 +86,32 @@ public final class Pantalla {
 			}
 		}
 	}
+	
+	public void mostrarEnemigo(int compensacionX, int compensacionY, Enemigo enemigo) {
+		compensacionX -= diferenciaX;
+		compensacionY -= diferenciaY;
+
+		for (int y = 0; y < enemigo.obtenSprite().obtenLado(); y++) {
+			int posicionY = y + compensacionY;
+			for (int x = 0; x < enemigo.obtenSprite().obtenLado(); x++) {
+				int posicionX = x + compensacionX;
+				if (posicionX < -enemigo.obtenSprite().obtenLado() || posicionX >= ancho || posicionY < 0
+						|| posicionY >= alto) {
+					break;
+				}
+				if (posicionX < 0) {
+					posicionX = 0;
+				}
+				// pixeles[posicionX + posicionY * ancho] =
+				// jugador.obtenSprite().pixeles[x + y
+				// * jugador.obtenSprite().obtenLado()];
+				int colorPixelJugador = enemigo.obtenSprite().pixeles[x + y * enemigo.obtenSprite().obtenLado()];
+				if (colorPixelJugador != 0xffffffff) {
+					pixeles[posicionX + posicionY * ancho] = colorPixelJugador;
+					}
+				}
+			}
+		}
 
 	public void estableceDiferencia(final int diferenciaX, final int diferenciaY) {
 		this.diferenciaX = diferenciaX;
