@@ -41,4 +41,9 @@ public abstract class Ente {
 		return eliminado;
 	}
 
+	public int getNivel() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -22,7 +22,6 @@ public class Enemigo extends Criatura {
 
 		this.x = posicionX;
 		this.y = posicionY;
-		establecerVida(100);
 	}
 
 	@Override

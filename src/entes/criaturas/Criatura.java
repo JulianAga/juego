@@ -3,15 +3,10 @@ package entes.criaturas;
 import entes.Ente;
 import graficos.Sprite;
 
-public abstract class Criatura extends Ente {
+public class Criatura extends Ente {
 	protected Sprite sprite;
 	protected char direccion = 'n';
 	protected boolean enMovimiento = false;
-	public int vida;
-
-	public void establecerVida(int vida) {
-		this.vida = vida;
-	}
 
 	@Override
 	public void actualizar() {
@@ -105,4 +100,16 @@ public abstract class Criatura extends Ente {
 	public Sprite obtenSprite() {
 		return sprite;
 	}
+
+	@Override
+	public int getNivel() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getExpBase() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
