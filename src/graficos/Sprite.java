@@ -28,6 +28,7 @@ public final class Sprite {
 	public static final Sprite IZQUIERDA2 = new Sprite(32, 3, 2, 0, HojaSprites.jugador);
 	// Fin de la colección
 
+	//	Coleccion Sprites ENEMIGO
 	public static final Sprite STANDING = new Sprite(32, 0, 0, 1, HojaSprites.enemigo);
 
 	// Colección de sprites MAPA
