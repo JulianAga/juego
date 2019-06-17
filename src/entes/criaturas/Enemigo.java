@@ -42,26 +42,22 @@ public class Enemigo extends Criatura {
 			velocidadMovimiento = 2;
 		}
 
-		if (teclado.arriba) {
-			desplazamientoY -= velocidadMovimiento;
-		}
-		if (teclado.abajo) {
-			desplazamientoY += velocidadMovimiento;
-		}
-		if (teclado.izquierda) {
-			desplazamientoX -= velocidadMovimiento;
-		}
-		if (teclado.derecha) {
-			desplazamientoX += velocidadMovimiento;
-		}
-
+	
 		if (desplazamientoX != 0 || desplazamientoY != 0) {
 			mover(desplazamientoX, desplazamientoY);
 			enMovimiento = true;
 		} else {
 			enMovimiento = false;
 		}
-
+//		int i=0;
+//		do
+//		{
+//			desplazamientoX=1;
+//			i++;	
+//		}
+//		while(i<123);
+//		
+//		desplazamientoX=0;
 		sprite = sprite.STANDING;
 
 	}
