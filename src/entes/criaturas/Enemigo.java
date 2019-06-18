@@ -41,65 +41,16 @@ public class Enemigo extends Criatura {
 		} else {
 			enMovimiento = false;
 		}
-
-		int resto = animacion % 40;
-
-		if (direccion == 'n') {
-			sprite = Sprite.STANDING;
-			if (enMovimiento) {
-				if (resto > 10 && resto <= 20) {
-					sprite = Sprite.STANDING;
-				} else if (resto > 20 && resto <= 30) {
-					sprite = Sprite.STANDING;
-				} else if (resto > 30) {
-					sprite = Sprite.STANDING;
-				} else {
-					sprite = sprite.STANDING;
-				}
-			}
-		}
-		if (direccion == 's') {
-			sprite = Sprite.STANDING;
-			if (enMovimiento) {
-				if (resto > 10 && resto <= 20) {
-					sprite = Sprite.STANDING;
-				} else if (resto > 20 && resto <= 30) {
-					sprite = Sprite.STANDING;
-				} else if (resto > 30) {
-					sprite = Sprite.STANDING;
-				} else {
-					sprite = sprite.STANDING;
-				}
-			}
-		}
-		if (direccion == 'o') {
-			sprite = Sprite.STANDING;
-			if (enMovimiento) {
-				if (resto > 10 && resto <= 20) {
-					sprite = Sprite.STANDING;
-				} else if (resto > 20 && resto <= 30) {
-					sprite = Sprite.STANDING;
-				} else if (resto > 30) {
-					sprite = Sprite.STANDING;
-				} else {
-					sprite = sprite.STANDING;
-				}
-			}
-		}
-		if (direccion == 'e') {
-			sprite = Sprite.STANDING;
-			if (enMovimiento) {
-			} else if (resto > 20 && resto <= 30) {
-				if (resto > 10 && resto <= 20) {
-					sprite = Sprite.STANDING;
-					sprite = Sprite.STANDING;
-				} else if (resto > 30) {
-					sprite = Sprite.STANDING;
-				} else {
-					sprite = sprite.STANDING;
-				}
-			}
-		}
+//		int i=0;
+//		do
+//		{
+//			desplazamientoX=1;
+//			i++;	
+//		}
+//		while(i<123);
+//		
+//		desplazamientoX=0;
+		sprite = sprite.STANDING;
 
 	}
 
