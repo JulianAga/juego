@@ -4,5 +4,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="recursos"/>
 	<classpathentry kind="lib" path="C:/Users/JulianAga/eclipse-workspace/TP Final Lab 3/java-json.jar"/>
+	<classpathentry kind="lib" path="java-json.jar"/>
+	<classpathentry kind="lib" path="src/java-json.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -13,15 +13,18 @@ import manager.InteraccionUsuario;
 
 public class JugadorP {
 
-	/**Estas variables representan las estadísticas individuales que pueden tener los personajes.
-	*Son numeros al azar entre 1 y 31 y sirven, en conjunto con las estadísticas base de la clase,
-	*para calcular las estadísticas finales del personaje tanto cuando es creado como cuando sube 
-	*de nivel.
-	*/
+	/**
+	 * Estas variables representan las estadísticas individuales que pueden tener
+	 * los personajes. Son numeros al azar entre 1 y 31 y sirven, en conjunto con
+	 * las estadísticas base de la clase, para calcular las estadísticas finales del
+	 * personaje tanto cuando es creado como cuando sube de nivel.
+	 */
 	private HashMap<String, Integer> statsI;
 
-	/**Son las estadísticas finales y visibles que posee un personaje una vez se lo calcula en
-	 referencia a las estadísticas individuales (del personaje) y base (de la clase).
+	/**
+	 * Son las estadísticas finales y visibles que posee un personaje una vez se lo
+	 * calcula en referencia a las estadísticas individuales (del personaje) y base
+	 * (de la clase).
 	 */
 	private LinkedHashMap<String, Integer> stats;
 
@@ -65,7 +68,8 @@ public class JugadorP {
 	}
 
 	/**
-	 * Crea una instancia de la clase Jugador con todos sus atributos pasados por parámetro.
+	 * Crea una instancia de la clase Jugador (pelea) con todos sus atributos
+	 * pasados por parámetro.
 	 */
 	public JugadorP(Integer vidaMax, Integer defensa, Integer resistenciaM, Integer dañoF, Integer dañoM,
 			Integer velocidad, Integer level, String clase, Integer ExpBase) {
@@ -138,8 +142,8 @@ public class JugadorP {
 		InteraccionUsuario.MostrarHabilidades(this);
 	}
 
-	//GETTERS Y SETTERS
-	
+	// GETTERS Y SETTERS
+
 	public int getResistenciaM() {
 		return stats.get(resistenciaM);
 	}
@@ -276,15 +280,11 @@ public class JugadorP {
 		return stats;
 	}
 
-	/* no anda 
-	 * public JSONObject getFormatoJSON() throws JSONException {
-		JSONObject a = new JSONObject();
-		a.put("Stats", stats);
-		a.put("StatsI", statsI);
-		a.put("Habilidades", habilidades);
-		a.put("Con Vida", conVida);
-		a.put("Ubicacion", ubicacion);
-		return a;
-	}*/
+	/*
+	 * no anda public JSONObject getFormatoJSON() throws JSONException { JSONObject
+	 * a = new JSONObject(); a.put("Stats", stats); a.put("StatsI", statsI);
+	 * a.put("Habilidades", habilidades); a.put("Con Vida", conVida);
+	 * a.put("Ubicacion", ubicacion); return a; }
+	 */
 
 }
