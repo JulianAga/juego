@@ -1,5 +1,9 @@
 package habilidades;
 
+/**
+ * Esta clase contiene el constructor, getters y setters de las habilidades. Aqui se define su nombre, su costo, entre otros atributos.
+ *
+ */
 public class Habilidad {
 
 	private String nombre;
@@ -9,6 +13,9 @@ public class Habilidad {
 	private int nivelDesbloqueo;
 	private int prioridad;
 	
+	/**
+	 * Crea una instancia vacía de la clase "Habilidad".
+	 */
 	public Habilidad() 
 	{
 		nombre = "";
@@ -17,6 +24,9 @@ public class Habilidad {
 		costoMana = 0;
 	}
 	
+	/**
+	 * Crea una instancia de la clase "Habilidad" con todos sus argumentos pasados por parametro.
+	 */
 	public Habilidad(String nombre, String tipoDaño, int potencia, int costoMana, int nivelDesbloqueo,
 			int prioridad) 
 	{
@@ -28,6 +38,10 @@ public class Habilidad {
 		this.prioridad = prioridad;
 	}
 	
+	
+	/**
+	 * Muestra la habilidad por pantalla.
+	 */
 	public void MostrarHabilidad()
 	{
 		System.out.println(getNombre()+"Daño: "+getTipoDaño()+"Potencia: "+getPotencia()+"Costo mana: "+getCostoMana());

@@ -2,6 +2,10 @@ package entes.criaturas;
 
 import herramientas.Biblioteca;
 
+/**
+ * Clase "Perro Salvaje" que hereda de "JugadorP". Los atributos que posee son estáticos y son las estadísticas base que tiene cada personaje de clase Perro Salvaje.
+ *
+ */
 public class PerroSalvaje extends JugadorP {
 
 	private final static int vidaMax = 15;

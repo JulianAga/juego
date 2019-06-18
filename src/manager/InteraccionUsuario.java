@@ -8,6 +8,11 @@ import entes.criaturas.JugadorP;
 import habilidades.Habilidad;
 import herramientas.Dado;
 
+/**
+ * Esta clase posee toda la interacción que tiene el programa con el usuario. Es decir, posee las cosas que se le muestran por consola,
+ * cuando un usuario debe elegir una opción y el inicio del juego.
+ *
+ */
 public class InteraccionUsuario {
 
 	// Metodos utilizados en pueblos.

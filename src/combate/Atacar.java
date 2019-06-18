@@ -2,16 +2,20 @@ package combate;
 
 import habilidades.Habilidad;
 
+/**
+ * Esta clase es la que sirve para que el personaje pueda atacar durante el combate.
+ *
+ */
 public class Atacar {
 	/**
 	 * 
-	 * @param h
-	 * @param dañoF
-	 * @param dañoM
-	 * @param lvl
-	 * @param def
-	 * @param res
-	 * @return
+	 * @param h Es la habilidad utilizada.
+	 * @param dañoF Es el daño fisico
+	 * @param dañoM Es el daño magico
+	 * @param lvl Es el nivel del personaje
+	 * @param def Es la defensa
+	 * @param res Es la resistencia
+	 * @return el daño que hace el personaje
 	 */
 	public static int CalcularDaño(Habilidad h, int dañoF, int dañoM, int lvl, int def, int res) {
 		if (h.getTipoDaño().equals("F")) {

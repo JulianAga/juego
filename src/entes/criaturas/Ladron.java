@@ -2,6 +2,10 @@ package entes.criaturas;
 
 import herramientas.Biblioteca;
 
+/**
+ * Clase "Ladron" que hereda de "JugadorP". Los atributos que posee son estáticos y son las estadísticas base que tiene cada personaje de clase Ladrón.
+ * Sus stats base suman 500.
+ */
 public class Ladron extends JugadorP {
 
 	/// Estas estadisticas son las base que tiene cada personaje de clase Ladrón.
@@ -15,7 +19,6 @@ public class Ladron extends JugadorP {
 	private final static String clase = "Ladron";
 	private final static Integer expBase = 100;
 
-	// Total de stats base = 500.
 	/*
 	 * public Ladron() { super(); }
 	 */

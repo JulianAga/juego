@@ -7,6 +7,10 @@ import habilidades.Habilidad;
 import herramientas.CalcularStats;
 import manager.InteraccionUsuario;
 
+/**
+ * Esta clase contiene los métodos para que dos personajes entren en combate.
+ *
+ */
 public class MetodosCombate {
 	private static int daño;
 	private static Habilidad h;
@@ -70,7 +74,7 @@ public class MetodosCombate {
 	}
 
 	/**
-	 * 
+	 * Se le da la experiencia al personaje y si es necesario, se le sube el nivel. 
 	 * @param a
 	 * @param b
 	 */
@@ -84,10 +88,10 @@ public class MetodosCombate {
 	}
 
 	/**
-	 * 
-	 * @param a
-	 * @param b
-	 * @param h
+	 * Se produce el ataque de un personaje a otro.
+	 * @param a Personaje que efectua el ataque
+	 * @param b Personaje que recibe el ataque
+	 * @param h Habilidad que usa el atacante
 	 */
 	private static void EfectuarAtaque(JugadorP a, JugadorP b, Habilidad h) {
 		InteraccionUsuario.Ataque(a.getClase(), h); // Muestra por pantalla qué ataque se efectuó (el nombre)
@@ -111,14 +115,14 @@ public class MetodosCombate {
 	}
 
 	/**
-	 * 
-	 * @param h
-	 * @param dañoF
-	 * @param dañoM
-	 * @param lvl
-	 * @param def
-	 * @param res
-	 * @return
+	 * Calcula el daño que hace cierta habilidad.
+	 * @param h Habilidad
+	 * @param dañoF Daño fisico
+	 * @param dañoM Daño magico
+	 * @param lvl Nivel
+	 * @param def Defensa
+	 * @param res Resistencia
+	 * @return Un entero que representa el daño que hace.
 	 */
 	public static int CalcularDaño(Habilidad h, int dañoF, int dañoM, int lvl, int def, int res) {
 		if (h.getTipoDaño().equals("F")) // Si la habilidad usada es daño F(fisico) usa la
@@ -132,10 +136,10 @@ public class MetodosCombate {
 	}
 
 	/**
-	 * 
-	 * @param a
-	 * @param b
-	 * @return
+	 * Calcula cual de los dos personajes tiene la prioridad de ataque.
+	 * @param a Personaje A
+	 * @param b Personaje B
+	 * @return Un entero que puede ser -1 si la prioridad la tiene el personaje A o 0 si la prioridad la tiene el personaje B.
 	 */
 	private static int CalcularPrioridad(JugadorP a, JugadorP b) {
 		if (a.getVelocidad() > b.getVelocidad())

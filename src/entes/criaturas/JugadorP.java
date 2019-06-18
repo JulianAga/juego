@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+// ACA IRIAN LOS IMPORT DEL JSON
 
 import habilidades.Habilidad;
 import herramientas.CalcularStats;
@@ -14,20 +13,16 @@ import manager.InteraccionUsuario;
 
 public class JugadorP {
 
-	// Estas variables representan las estadísticas individuales que pueden tener
-	// los personajes.
-	// Son numeros al azar entre 1 y 31 y sirven, en conjunto con las estadísticas
-	// base de la clase,
-	// para calcular las estadísticas finales del personaje tanto cuando es creado
-	// como cuando sube
-	// de nivel.
-
+	/**Estas variables representan las estadísticas individuales que pueden tener los personajes.
+	*Son numeros al azar entre 1 y 31 y sirven, en conjunto con las estadísticas base de la clase,
+	*para calcular las estadísticas finales del personaje tanto cuando es creado como cuando sube 
+	*de nivel.
+	*/
 	private HashMap<String, Integer> statsI;
 
-	// Son las estadísticas finales y visibles que posee un personaje una vez se lo
-	// calcula en
-	// referencia a las estadísticas individuales (del personaje) y base (de la
-	// clase).
+	/**Son las estadísticas finales y visibles que posee un personaje una vez se lo calcula en
+	 referencia a las estadísticas individuales (del personaje) y base (de la clase).
+	 */
 	private LinkedHashMap<String, Integer> stats;
 
 	// Las claves utilizadas en los HashMap
@@ -60,12 +55,18 @@ public class JugadorP {
 		return clase;
 	}
 
+	/**
+	 * Crea una instancia de jugador vacía.
+	 */
 	public JugadorP() {
 		statsI = new HashMap<>();
 		stats = new LinkedHashMap<>();
 		habilidades = new ArrayList<Habilidad>();
 	}
 
+	/**
+	 * Crea una instancia de la clase Jugador con todos sus atributos pasados por parámetro.
+	 */
 	public JugadorP(Integer vidaMax, Integer defensa, Integer resistenciaM, Integer dañoF, Integer dañoM,
 			Integer velocidad, Integer level, String clase, Integer ExpBase) {
 
@@ -96,6 +97,9 @@ public class JugadorP {
 
 	}
 
+	/**
+	 * Recupera toda la vida perdida del personaje hasta llenarla por completo.
+	 */
 	public void RecuperarSalud() {
 		setVidaActual(getVidaMax());
 	}
@@ -117,6 +121,9 @@ public class JugadorP {
 		InteraccionUsuario.MostrarVida(getVidaMax(), getVidaActual());
 	}
 
+	/**
+	 * Resta la cantidad de vida que se pasa por parámetro.
+	 */
 	public void QuitarVida(int resta) {
 		int vida = stats.get(vidaActual);
 		vida -= resta;
@@ -131,6 +138,8 @@ public class JugadorP {
 		InteraccionUsuario.MostrarHabilidades(this);
 	}
 
+	//GETTERS Y SETTERS
+	
 	public int getResistenciaM() {
 		return stats.get(resistenciaM);
 	}
@@ -267,7 +276,8 @@ public class JugadorP {
 		return stats;
 	}
 
-	public JSONObject getFormatoJSON() throws JSONException {
+	/* no anda 
+	 * public JSONObject getFormatoJSON() throws JSONException {
 		JSONObject a = new JSONObject();
 		a.put("Stats", stats);
 		a.put("StatsI", statsI);
@@ -275,6 +285,6 @@ public class JugadorP {
 		a.put("Con Vida", conVida);
 		a.put("Ubicacion", ubicacion);
 		return a;
-	}
+	}*/
 
 }

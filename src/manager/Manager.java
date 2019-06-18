@@ -5,6 +5,10 @@ import entes.criaturas.Ladron;
 import entes.criaturas.Paladin;
 import herramientas.Biblioteca;
 
+/**
+ * Esta clase es la encargada de poner a funcionar el juego.
+ *
+ */
 public class Manager {
 
 	public static void InicioJuego() {
@@ -39,8 +43,10 @@ public class Manager {
 
 	}
 
-	public static void Juego(JugadorP jugador) // Comienza el juego evaluando la posición en la
-	// que se encuentra el jugador y continua desde allí
+	/**
+	 * Comienza el juego evaluando la posición en la que se encuentra el jugador y continúa desde allí.
+	 */
+	public static void Juego(JugadorP jugador)
 	{
 		int opcion;
 
