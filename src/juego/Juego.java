@@ -17,6 +17,7 @@ import entes.criaturas.Enemigo;
 import entes.criaturas.Jugador;
 import graficos.Pantalla;
 import graficos.Sprite;
+import manager.Manager;
 import mapa.Mapa;
 import mapa.MapaCargado;
 
@@ -38,6 +39,7 @@ public class Juego extends Canvas implements Runnable {
 
 	private static JFrame ventana;
 	private static Thread thread;
+	private static Thread thread2;
 	private static Teclado teclado;
 	private static Pantalla pantalla;
 
@@ -54,8 +56,9 @@ public class Juego extends Canvas implements Runnable {
 																										// añadimos el
 																										// icono
 //
+	private static Manager manager;
 	public static boolean peleando = false;
-	
+
 	private Juego() {
 		setPreferredSize(new Dimension(ANCHO, ALTO));
 
@@ -68,7 +71,7 @@ public class Juego extends Canvas implements Runnable {
 
 		mapa = new MapaCargado("/mapas/mapaDesierto.png");
 
-		enemigo = new Enemigo(mapa, teclado, Sprite.STANDING, 123, 123);
+		enemigo = new Enemigo(mapa, Sprite.STANDING, 123, 123);
 		jugador = new Jugador(mapa, teclado, Sprite.ARRIBA0, 225, 225, 100, 12, 12, 12, 14, 21, 45, "paladin", 0);
 
 		//
@@ -88,9 +91,9 @@ public class Juego extends Canvas implements Runnable {
 	public static void main(String[] args) {
 		Juego juego = new Juego();
 		juego.iniciar();
-		if (peleando) {
-			juego.detener();
-		}
+
+//		manager.InicioJuego();
+
 	}
 
 	private synchronized void iniciar() {

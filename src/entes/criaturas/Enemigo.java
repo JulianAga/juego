@@ -1,6 +1,5 @@
 package entes.criaturas;
 
-import control.Teclado;
 import graficos.Pantalla;
 import graficos.Sprite;
 import mapa.Mapa;
@@ -8,16 +7,14 @@ import mapa.Mapa;
 public class Enemigo extends Criatura {
 
 	int animacion;
-	private Teclado teclado;
 
 	public Enemigo(Mapa mapa, Sprite sprite) {
 		this.mapa = mapa;
 		this.sprite = sprite;
 	}
 
-	public Enemigo(Mapa mapa, Teclado teclado, Sprite sprite, int posicionX, int posicionY) {
+	public Enemigo(Mapa mapa, Sprite sprite, int posicionX, int posicionY) {
 		this.mapa = mapa;
-		this.teclado = teclado;
 		this.sprite = sprite;
 
 		this.x = posicionX;
@@ -36,23 +33,6 @@ public class Enemigo extends Criatura {
 			animacion++;
 		} else {
 			animacion = 0;
-		}
-
-		if (teclado.correr) {
-			velocidadMovimiento = 2;
-		}
-
-		if (teclado.arriba) {
-			desplazamientoY -= velocidadMovimiento;
-		}
-		if (teclado.abajo) {
-			desplazamientoY += velocidadMovimiento;
-		}
-		if (teclado.izquierda) {
-			desplazamientoX -= velocidadMovimiento;
-		}
-		if (teclado.derecha) {
-			desplazamientoX += velocidadMovimiento;
 		}
 
 		if (desplazamientoX != 0 || desplazamientoY != 0) {

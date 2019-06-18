@@ -1,6 +1,6 @@
 package manager;
 
-import entes.criaturas.Jugador;
+import entes.criaturas.JugadorP;
 import entes.criaturas.Ladron;
 import entes.criaturas.Paladin;
 import herramientas.Biblioteca;
@@ -12,7 +12,7 @@ public class Manager {
 		boolean flag = false;
 		InteraccionUsuario.InicioJuego();
 		comando = InteraccionUsuario.ElegirOpcion();
-		Jugador jugador;
+		JugadorP jugador;
 		while (!flag) {
 			switch (comando) {
 			case 1: // Crear Ladron.
@@ -39,7 +39,7 @@ public class Manager {
 
 	}
 
-	public static void Juego(Jugador jugador) // Comienza el juego evaluando la posición en la
+	public static void Juego(JugadorP jugador) // Comienza el juego evaluando la posición en la
 	// que se encuentra el jugador y continua desde allí
 	{
 		int opcion;
@@ -55,7 +55,7 @@ public class Manager {
 //					puebloInicio.Posada(jugador);
 					break;
 				case 2:
-//					puebloInicio.Avanzar(jugador);
+					// puebloInicio.Avanzar(jugador);
 					break;
 				default:
 					InteraccionUsuario.OpcionInvalida();

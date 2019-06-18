@@ -1,32 +1,20 @@
 package entes.criaturas;
 
-public class PerroSalvaje extends Criatura {
+import herramientas.Biblioteca;
 
-	private int vidaMax = 15;
-	private int defensa = 15;
-	private int resistencia = 5;
-	private int dañoF = 20;
-	private int dañoM = 20;
-	private int velocidad = 40;
-	private String clase = "PerroSalvaje";
-	private int experienciaBase = 50;
+public class PerroSalvaje extends JugadorP {
 
-	public PerroSalvaje(int vidaMax, int defensa, int resistencia, int dañoF, int dañoM, int velocidad, String clase,
-			int experienciaBase) {
-		super();
-		this.vidaMax = vidaMax;
-		this.defensa = defensa;
-		this.resistencia = resistencia;
-		this.dañoF = dañoF;
-		this.dañoM = dañoM;
-		this.velocidad = velocidad;
-		this.clase = clase;
-		this.experienciaBase = experienciaBase;
-	}
+	private final static int vidaMax = 15;
+	private final static int defensa = 15;
+	private final static int resistencia = 5;
+	private final static int dañoF = 20;
+	private final static int dañoM = 20;
+	private final static int velocidad = 40;
+	private final static String clase = "PerroSalvaje";
+	private final static int experienciaBase = 50;
 
 	public PerroSalvaje() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -34,5 +22,8 @@ public class PerroSalvaje extends Criatura {
 	 * 
 	 * @param level el nivel con el que queres que se cree el perro
 	 */
-
+	public PerroSalvaje(int level) {
+		super(vidaMax, defensa, resistencia, dañoF, dañoM, velocidad, level, clase, experienciaBase);
+		setHabilidades(Biblioteca.CargarHabilidadesPerro());
+	}
 }

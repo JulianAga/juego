@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Scanner;
 
-import entes.criaturas.Jugador;
+import entes.criaturas.JugadorP;
 import habilidades.Habilidad;
 import herramientas.Dado;
 
@@ -17,6 +17,7 @@ public class InteraccionUsuario {
 		System.out.println("2.Avanzar");
 		System.out.println("3.Retroceder");
 		int opcion = ElegirOpcion();
+//		clearScreen();
 		return opcion;
 	}
 
@@ -41,15 +42,15 @@ public class InteraccionUsuario {
 		stats.forEach((k, v) -> System.out.println(k + ": " + v));
 	}
 
-	public static void MostrarVida(String string, int vidaActual) {
-		System.out.println("Vida: " + vidaActual + "/" + string);
+	public static void MostrarVida(int vidaMax, int vidaActual) {
+		System.out.println("Vida: " + vidaActual + "/" + vidaMax);
 	}
 
 	public static void MostrarMana(int mana) {
 		System.out.println("Mana: " + mana);
 	}
 
-	public static int MostrarHabilidades(Jugador a) {
+	public static int MostrarHabilidades(JugadorP a) {
 		int contador = 0;
 		ArrayList<Habilidad> habilidades = a.getHabilidades();
 		for (Habilidad h : habilidades) {
@@ -63,14 +64,14 @@ public class InteraccionUsuario {
 	}
 
 	// Metodos de ingreso por teclado
-	public static Habilidad ElegirHabilidadAleatoria(Jugador a) {
+	public static Habilidad ElegirHabilidadAleatoria(JugadorP a) {
 		int numero;
 		ArrayList<Habilidad> habilidades = a.getHabilidades();
 		numero = Dado.numeroAleatorio(habilidades.size());
 		return a.getHabilidad(numero);
 	}
 
-	public static Habilidad ElegirHabilidad(Jugador a) {
+	public static Habilidad ElegirHabilidad(JugadorP a) {
 		int cant;
 		int opcion;
 		cant = MostrarHabilidades(a);
@@ -139,7 +140,7 @@ public class InteraccionUsuario {
 	}
 
 	public static void InicioJuego() {
-		System.out.println("BIENBENIDO");
+		System.out.println("BIENVENIDO");
 		System.out.println("Elegir Clase");
 		System.out.println("1.Ladrón");
 		System.out.println("2.Paladín");

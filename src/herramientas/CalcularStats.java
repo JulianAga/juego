@@ -1,6 +1,6 @@
 package herramientas;
 
-import entes.criaturas.Criatura;
+import entes.criaturas.JugadorP;
 
 public class CalcularStats {
 
@@ -16,7 +16,7 @@ public class CalcularStats {
 		return (int) Math.pow(exp, 1.0 / 3.0);
 	}
 
-	public static int aumentarExp(Criatura a, Criatura b) {
+	public static int aumentarExp(JugadorP a, JugadorP b) {
 		return (int) (b.getExpBase() * b.getNivel() / 5 * Math.pow(2 * b.getNivel() + 10, 2.5)
 				/ Math.pow(b.getNivel() + a.getNivel() + 10, 2.5) + 1);
 	}
