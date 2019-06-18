@@ -13,9 +13,12 @@ import graficos.Sprite;
 import habilidades.Habilidad;
 import herramientas.CalcularStats;
 import herramientas.Dado;
+import manager.Manager;
 import mapa.Mapa;
 
 public class Jugador extends Criatura {
+
+	public static Manager pelea;
 
 //Estas variables representan las estadísticas individuales que pueden tener
 // los personajes.
@@ -37,7 +40,7 @@ public class Jugador extends Criatura {
 	private final String vidaActual = "Vida actual";
 	private String vidaMax = "vidaMax";
 	private final String resistenciaF = "Resistencia f";
-	private final String resistenciaM = "Resistencia m";
+	private final static String resistenciaM = "Resistencia m";
 	private final String dañoF = "Daño f";
 	private final String dañoM = "Daño m";
 	private final String velocidad = "Velocidad";
@@ -97,7 +100,19 @@ public class Jugador extends Criatura {
 		habilidades = new ArrayList<Habilidad>();
 		conVida = true;
 
-//		vidaMax = CalcularStats.calcularHp(vidaMax, vidaMax, level);
+	}
+
+	protected static Teclado teclado;
+
+	private int animacion;
+
+	public Jugador(Mapa mapa, Teclado teclado, Sprite sprite) {
+		this.mapa = mapa;
+		this.teclado = teclado;
+		this.sprite = sprite;
+		statsI = new HashMap<>();
+		stats = new LinkedHashMap<>();
+		habilidades = new ArrayList<Habilidad>();
 	}
 
 //	public void RecuperarSalud() {
@@ -140,6 +155,7 @@ public class Jugador extends Criatura {
 		return stats.get(velocidad);
 	}
 
+	@Override
 	public int getVidaActual() {
 		return stats.get(vidaActual);
 	}
@@ -279,19 +295,6 @@ public class Jugador extends Criatura {
 //		return stats.get(nivel);
 //	}
 
-	private Teclado teclado;
-
-	private int animacion;
-
-	public Jugador(Mapa mapa, Teclado teclado, Sprite sprite) {
-		this.mapa = mapa;
-		this.teclado = teclado;
-		this.sprite = sprite;
-		statsI = new HashMap<>();
-		stats = new LinkedHashMap<>();
-		habilidades = new ArrayList<Habilidad>();
-	}
-
 	@Override
 	public void actualizar() {
 
@@ -390,6 +393,10 @@ public class Jugador extends Criatura {
 		}
 
 		// perderVida();
+
+		if (x <= 123 && y <= 123) {
+			pelea.InicioJuego();
+		}
 
 	}
 

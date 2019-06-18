@@ -3,10 +3,14 @@ package entes.criaturas;
 import entes.Ente;
 import graficos.Sprite;
 
-public class Criatura extends Ente {
+public abstract class Criatura extends Ente {
 	protected Sprite sprite;
 	protected char direccion = 'n';
 	protected boolean enMovimiento = false;
+
+	public Criatura() {
+
+	}
 
 	@Override
 	public void actualizar() {
@@ -108,6 +112,11 @@ public class Criatura extends Ente {
 	}
 
 	public int getExpBase() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getVidaActual() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

@@ -54,7 +54,8 @@ public class Juego extends Canvas implements Runnable {
 																										// añadimos el
 																										// icono
 //
-
+	public static boolean peleando = false;
+	
 	private Juego() {
 		setPreferredSize(new Dimension(ANCHO, ALTO));
 
@@ -87,7 +88,9 @@ public class Juego extends Canvas implements Runnable {
 	public static void main(String[] args) {
 		Juego juego = new Juego();
 		juego.iniciar();
-
+		if (peleando) {
+			juego.detener();
+		}
 	}
 
 	private synchronized void iniciar() {

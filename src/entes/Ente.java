@@ -9,7 +9,7 @@ public abstract class Ente {
 
 	private boolean eliminado = false;
 
-	protected Mapa mapa;
+	protected static Mapa mapa;
 
 	public void actualizar() {
 	}
