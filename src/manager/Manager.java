@@ -1,5 +1,7 @@
 package manager;
 
+import biblioteca.escenario.CaminoNorte;
+import biblioteca.escenario.PuebloInicio;
 import entes.criaturas.JugadorP;
 import entes.criaturas.Ladron;
 import entes.criaturas.Paladin;
@@ -44,12 +46,13 @@ public class Manager {
 	}
 
 	/**
-	 * Comienza el juego evaluando la posición en la que se encuentra el jugador y continúa desde allí.
+	 * Comienza el juego evaluando la posición en la que se encuentra el jugador y
+	 * continúa desde allí.
 	 */
-	public static void Juego(JugadorP jugador)
-	{
+	public static void Juego(JugadorP jugador) {
 		int opcion;
-
+		PuebloInicio puebloInicio = new PuebloInicio();
+		CaminoNorte caminoNorte = new CaminoNorte();
 		while (jugador.conVida()) {
 			InteraccionUsuario.MostrarVida(jugador.getVidaMax(), jugador.getVidaActual());
 			InteraccionUsuario.MostrarClaveValor(jugador.getStatsMap(), jugador.getNivelString());
@@ -58,10 +61,10 @@ public class Manager {
 				opcion = InteraccionUsuario.OpcionesPuebloInicio();
 				switch (opcion) {
 				case 1:
-//					puebloInicio.Posada(jugador);
+					puebloInicio.Posada(jugador);
 					break;
 				case 2:
-					// puebloInicio.Avanzar(jugador);
+					puebloInicio.Avanzar(jugador);
 					break;
 				default:
 					InteraccionUsuario.OpcionInvalida();
@@ -71,10 +74,10 @@ public class Manager {
 				opcion = InteraccionUsuario.OpcionesCamino(Biblioteca.Mapa_CaminoNorte());
 				switch (opcion) {
 				case 1:
-//					caminoNorte.Avanzar(jugador);
+					caminoNorte.Avanzar(jugador);
 					break;
 				case 2:
-//					caminoNorte.Retroceder(jugador);
+					caminoNorte.Retroceder(jugador);
 					break;
 
 				}
