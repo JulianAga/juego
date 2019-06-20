@@ -19,7 +19,7 @@ public abstract class Camino {
 
 	/**
 	 * Hace que el personaje retroceda. Es abstracta y cada clase debe sobreescribirlo.
-	 * @param JugadorP
+	 * @param Personaje
 	 */
 	public abstract void Retroceder(JugadorP a);
 

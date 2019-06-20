@@ -17,7 +17,6 @@ import entes.criaturas.Enemigo;
 import entes.criaturas.Jugador;
 import graficos.Pantalla;
 import graficos.Sprite;
-import manager.Manager;
 import mapa.Mapa;
 import mapa.MapaCargado;
 
@@ -39,7 +38,6 @@ public class Juego extends Canvas implements Runnable {
 
 	private static JFrame ventana;
 	private static Thread thread;
-	private static Thread thread2;
 	private static Teclado teclado;
 	private static Pantalla pantalla;
 
@@ -52,11 +50,6 @@ public class Juego extends Canvas implements Runnable {
 																									// pixeles
 
 	public static final ImageIcon icono = new ImageIcon(Juego.class.getResource("/icono/Velez.png")); // con esta
-																										// funcion
-																										// añadimos el
-																										// icono
-//
-	private static Manager manager;
 	public static boolean peleando = false;
 
 	private Juego() {

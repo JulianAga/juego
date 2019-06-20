@@ -1,5 +1,7 @@
 package manager;
 
+import biblioteca.escenario.CaminoNorte;
+import biblioteca.escenario.PuebloInicio;
 import entes.criaturas.JugadorP;
 import entes.criaturas.Ladron;
 import entes.criaturas.Paladin;
@@ -51,32 +53,41 @@ public class Manager {
 		int opcion;
 
 		while (jugador.conVida()) {
-			InteraccionUsuario.MostrarVida(jugador.getVidaMax(), jugador.getVidaActual());
+			InteraccionUsuario.MostrarVida(jugador.getVidaMax(), jugador.getVidaActual(), jugador);
 			InteraccionUsuario.MostrarClaveValor(jugador.getStatsMap(), jugador.getNivelString());
 			InteraccionUsuario.MostrarClaveValor(jugador.getStatsMap(), jugador.getExpString());
-			if (jugador.getUbicacion().equals(Biblioteca.Mapa_PuebloInicio())) {
+			if (jugador.getUbicacion().equals(Biblioteca.Mapa_PuebloInicio())) 
+			{
+				PuebloInicio posada = new PuebloInicio();
 				opcion = InteraccionUsuario.OpcionesPuebloInicio();
-				switch (opcion) {
+				
+				switch (opcion) 
+				{
 				case 1:
-//					puebloInicio.Posada(jugador);
+						posada.Posada(jugador);
 					break;
 				case 2:
-					// puebloInicio.Avanzar(jugador);
+						posada.Avanzar(jugador);
+					break;
+				case 3:
+						posada.Retroceder(jugador);
 					break;
 				default:
 					InteraccionUsuario.OpcionInvalida();
 				}
 			}
-			if (jugador.getUbicacion().equals(Biblioteca.Mapa_CaminoNorte())) {
+			if (jugador.getUbicacion().equals(Biblioteca.Mapa_CaminoNorte())) 
+			{
+				CaminoNorte caminoNorte = new CaminoNorte();
 				opcion = InteraccionUsuario.OpcionesCamino(Biblioteca.Mapa_CaminoNorte());
-				switch (opcion) {
+				switch (opcion) 
+				{
 				case 1:
-//					caminoNorte.Avanzar(jugador);
+					caminoNorte.Avanzar(jugador);
 					break;
 				case 2:
-//					caminoNorte.Retroceder(jugador);
+					caminoNorte.Retroceder(jugador);
 					break;
-
 				}
 			}
 		}

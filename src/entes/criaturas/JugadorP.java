@@ -122,7 +122,7 @@ public class JugadorP {
 	}
 
 	public void mostrarVida() {
-		InteraccionUsuario.MostrarVida(getVidaMax(), getVidaActual());
+		InteraccionUsuario.MostrarVida(getVidaMax(), getVidaActual(), null);
 	}
 
 	/**

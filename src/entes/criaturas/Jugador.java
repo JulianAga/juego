@@ -7,6 +7,7 @@ import java.util.LinkedHashMap;
 //ACA IRIAN LOS IMPORTS DEL JSON
 
 import control.Teclado;
+import entes.Ente;
 import graficos.Pantalla;
 import graficos.Sprite;
 import habilidades.Habilidad;
@@ -48,8 +49,6 @@ public class Jugador extends Criatura {
 
 	private String ubicacion;
 
-	private int expBase;
-
 	private String clase;
 	/*
 	 * private int vidaActual; private int vidaMax; private int defensa; private int
@@ -67,8 +66,8 @@ public class Jugador extends Criatura {
 	public Jugador(Mapa mapa, Teclado teclado, Sprite sprite, int posicionX, int posicionY, Integer vidaMax,
 			Integer defensa, Integer resistenciaM, Integer dañoF, Integer dañoM, Integer velocidad, Integer level,
 			String clase, Integer ExpBase) {
-		this.mapa = mapa;
-		this.teclado = teclado;
+		Ente.mapa = mapa;
+		Jugador.teclado = teclado;
 		this.sprite = sprite;
 		this.x = posicionX;
 		this.y = posicionY;
@@ -76,7 +75,7 @@ public class Jugador extends Criatura {
 		statsI = new HashMap<>();
 		statsI.put(this.vidaMax, Dado.tirarDado(31));
 		statsI.put(this.resistenciaF, Dado.tirarDado(31));
-		statsI.put(this.resistenciaM, Dado.tirarDado(31));
+		statsI.put(Jugador.resistenciaM, Dado.tirarDado(31));
 		statsI.put(this.dañoF, Dado.tirarDado(31));
 		statsI.put(this.dañoM, Dado.tirarDado(31));
 		statsI.put(this.velocidad, Dado.tirarDado(31));
@@ -90,7 +89,7 @@ public class Jugador extends Criatura {
 		stats.put(this.dañoF, CalcularStats.calcularStat(dañoF, statsI.get(this.dañoF), level));
 		stats.put(this.dañoM, CalcularStats.calcularStat(dañoM, statsI.get(this.dañoM), level));
 		stats.put(this.resistenciaF, CalcularStats.calcularStat(defensa, statsI.get(this.resistenciaF), level));
-		stats.put(this.resistenciaM, CalcularStats.calcularStat(resistenciaM, statsI.get(this.resistenciaM), level));
+		stats.put(Jugador.resistenciaM, CalcularStats.calcularStat(resistenciaM, statsI.get(Jugador.resistenciaM), level));
 		stats.put(this.velocidad, CalcularStats.calcularStat(velocidad, statsI.get(this.velocidad), level));
 		stats.put(this.exp, CalcularStats.setearExp(level));
 		stats.put(this.nivel, level);
@@ -105,8 +104,8 @@ public class Jugador extends Criatura {
 	private int animacion;
 
 	public Jugador(Mapa mapa, Teclado teclado, Sprite sprite) {
-		this.mapa = mapa;
-		this.teclado = teclado;
+		Ente.mapa = mapa;
+		Jugador.teclado = teclado;
 		this.sprite = sprite;
 		statsI = new HashMap<>();
 		stats = new LinkedHashMap<>();
@@ -223,7 +222,7 @@ public class Jugador extends Criatura {
 	}
 
 	public void setResistenciaM(int recistenciaM) {
-		stats.put(this.resistenciaM, recistenciaM);
+		stats.put(Jugador.resistenciaM, recistenciaM);
 	}
 
 	public void setDañoF(int dañoF) {
@@ -259,7 +258,7 @@ public class Jugador extends Criatura {
 	}
 
 	public String getResistenciaMString() {
-		return this.resistenciaM;
+		return Jugador.resistenciaM;
 	}
 
 	public String getDañoFString() {
@@ -351,7 +350,7 @@ public class Jugador extends Criatura {
 				} else if (resto > 30) {
 					sprite = Sprite.ARRIBA2;
 				} else {
-					sprite = sprite.ARRIBA0;
+					sprite = Sprite.ARRIBA0;
 				}
 			}
 		}
@@ -365,7 +364,7 @@ public class Jugador extends Criatura {
 				} else if (resto > 30) {
 					sprite = Sprite.ABAJO2;
 				} else {
-					sprite = sprite.ABAJO0;
+					sprite = Sprite.ABAJO0;
 				}
 			}
 		}
@@ -379,7 +378,7 @@ public class Jugador extends Criatura {
 				} else if (resto > 30) {
 					sprite = Sprite.IZQUIERDA2;
 				} else {
-					sprite = sprite.IZQUIERDA0;
+					sprite = Sprite.IZQUIERDA0;
 				}
 			}
 		}
@@ -393,7 +392,7 @@ public class Jugador extends Criatura {
 				} else if (resto > 30) {
 					sprite = Sprite.DERECHA2;
 				} else {
-					sprite = sprite.DERECHA0;
+					sprite = Sprite.DERECHA0;
 				}
 			}
 		}
@@ -401,7 +400,7 @@ public class Jugador extends Criatura {
 		// perderVida();
 
 		if (x <= 123 && y <= 123) {
-			pelea.InicioJuego();
+			Manager.InicioJuego();
 		}
 
 	}
