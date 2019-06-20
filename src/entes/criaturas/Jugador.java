@@ -93,7 +93,8 @@ public class Jugador extends Criatura {
 		stats.put(this.dañoF, CalcularStats.calcularStat(dañoF, statsI.get(this.dañoF), level));
 		stats.put(this.dañoM, CalcularStats.calcularStat(dañoM, statsI.get(this.dañoM), level));
 		stats.put(this.resistenciaF, CalcularStats.calcularStat(defensa, statsI.get(this.resistenciaF), level));
-		stats.put(Jugador.resistenciaM, CalcularStats.calcularStat(resistenciaM, statsI.get(Jugador.resistenciaM), level));
+		stats.put(Jugador.resistenciaM,
+				CalcularStats.calcularStat(resistenciaM, statsI.get(Jugador.resistenciaM), level));
 		stats.put(this.velocidad, CalcularStats.calcularStat(velocidad, statsI.get(this.velocidad), level));
 		stats.put(this.exp, CalcularStats.setearExp(level));
 		stats.put(this.nivel, level);
@@ -402,9 +403,10 @@ public class Jugador extends Criatura {
 		if ((x >= 170 && x <= 265) && y <= 105) {
 			pelea.InicioJuego();
 
-		if (x <= 123 && y <= 123) {
-			Manager.InicioJuego();
+			if (x <= 123 && y <= 123) {
+				Manager.InicioJuego();
 
+			}
 		}
 
 	}
