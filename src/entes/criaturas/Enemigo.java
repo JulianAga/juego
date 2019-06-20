@@ -1,5 +1,6 @@
 package entes.criaturas;
 
+import entes.Ente;
 import graficos.Pantalla;
 import graficos.Sprite;
 import mapa.Mapa;
@@ -9,12 +10,12 @@ public class Enemigo extends Criatura {
 	int animacion;
 
 	public Enemigo(Mapa mapa, Sprite sprite) {
-		this.mapa = mapa;
+		Ente.mapa = mapa;
 		this.sprite = sprite;
 	}
 
 	public Enemigo(Mapa mapa, Sprite sprite, int posicionX, int posicionY) {
-		this.mapa = mapa;
+		Ente.mapa = mapa;
 		this.sprite = sprite;
 
 		this.x = posicionX;
@@ -26,8 +27,6 @@ public class Enemigo extends Criatura {
 
 		int desplazamientoX = 0;
 		int desplazamientoY = 0;
-
-		int velocidadMovimiento = 1;
 
 		if (animacion < 32767) {
 			animacion++;
@@ -50,7 +49,7 @@ public class Enemigo extends Criatura {
 //		while(i<123);
 //		
 //		desplazamientoX=0;
-		sprite = sprite.STANDING;
+		sprite = Sprite.STANDING;
 
 	}
 

@@ -9,11 +9,14 @@ import habilidades.Habilidad;
 import herramientas.Dado;
 
 /**
- * Esta clase posee toda la interacción que tiene el programa con el usuario. Es decir, posee las cosas que se le muestran por consola,
+ * Esta clase posee toda la interacción que tiene el programa con el usuario. 
+ * Es decir, posee las cosas que se le muestran por consola,
  * cuando un usuario debe elegir una opción y el inicio del juego.
  *
  */
 public class InteraccionUsuario {
+
+	private static Scanner scr;
 
 	// Metodos utilizados en pueblos.
 	public static int OpcionesPuebloInicio() {
@@ -47,8 +50,8 @@ public class InteraccionUsuario {
 		stats.forEach((k, v) -> System.out.println(k + ": " + v));
 	}
 
-	public static void MostrarVida(int vidaMax, int vidaActual) {
-		System.out.println("Vida: " + vidaActual + "/" + vidaMax);
+	public static void MostrarVida(int vidaMax, int vidaActual, JugadorP p) {
+		System.out.println(p.getClase() + " Vida: " + vidaActual + "/" + vidaMax);
 	}
 
 	public static void MostrarMana(int mana) {
@@ -85,7 +88,7 @@ public class InteraccionUsuario {
 	}
 
 	public static int ElegirOpcion() {
-		Scanner scr = new Scanner(System.in);
+		scr = new Scanner(System.in);
 		return scr.nextInt();
 	}
 	// Metodos varios
@@ -110,7 +113,7 @@ public class InteraccionUsuario {
 	public static int Encounter(String clase) {
 		int numero;
 		System.out.println("Te encontrás con un " + clase + "....");
-		System.out.println("1.Te plantas" + "/n" + "2.Rajás?");
+		System.out.println("1.Te plantas" + "  " + "2.Rajás?");
 		numero = ElegirOpcion();
 		return numero;
 	}

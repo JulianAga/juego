@@ -44,7 +44,7 @@ public class Habilidad {
 	 */
 	public void MostrarHabilidad()
 	{
-		System.out.println(getNombre()+"Daño: "+getTipoDaño()+"Potencia: "+getPotencia()+"Costo mana: "+getCostoMana());
+		System.out.println(getNombre()+" Daño: "+getTipoDaño()+" Potencia: "+getPotencia()+" Costo mana: "+getCostoMana());
 		System.out.println("------------------------");
 	}
 	
