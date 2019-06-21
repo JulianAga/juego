@@ -1,5 +1,8 @@
 package manager;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import biblioteca.escenario.CaminoNorte;
 import biblioteca.escenario.PuebloInicio;
 import entes.criaturas.JugadorP;
@@ -18,7 +21,7 @@ public class Manager {
 		boolean flag = false;
 		InteraccionUsuario.InicioJuego();
 		comando = InteraccionUsuario.ElegirOpcion();
-		JugadorP jugador;
+		JugadorP jugador = null;
 		while (!flag) {
 			switch (comando) {
 			case 1: // Crear Ladron.
@@ -39,6 +42,14 @@ public class Manager {
 				break;
 			}
 		}
+		JSONObject stats = new JSONObject();
+		try {
+			stats = jugador.getFormatoJSON();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		jugador.grabar(stats);
 	}
 
 	public static void FinJuego() {

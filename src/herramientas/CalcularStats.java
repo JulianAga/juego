@@ -3,12 +3,12 @@ package herramientas;
 import entes.criaturas.JugadorP;
 
 public class CalcularStats {
-
 	/**
 	 * Sirve para calcular el hp del personaje
+	 * 
 	 * @param hpBase
 	 * @param hpIndividual
-	 * @param nivel es el nivel del persoanje que la invoca
+	 * @param nivel        es el nivel del persoanje que la invoca
 	 * @return un entero que indica el hp
 	 */
 	public static int calcularHp(int hpBase, int hpIndividual, int nivel) {
@@ -17,6 +17,7 @@ public class CalcularStats {
 
 	/**
 	 * Sirve para calcular los stats del personaje
+	 * 
 	 * @param statBase
 	 * @param statIndividual
 	 * @param nivel
@@ -28,6 +29,7 @@ public class CalcularStats {
 
 	/**
 	 * Sirve para calcular el nivel del personaje
+	 * 
 	 * @param exp Experiencia
 	 * @return un entero que es el nivel
 	 */
@@ -38,7 +40,7 @@ public class CalcularStats {
 	/**
 	 * Aumenta la experiencia de un jugadorP por nivel
 	 */
-	//ACA FALTARIA QUE SON LOS PARAMETROSS Y QUE RETORNAN PORQUE LA DVD NO ENTENDI
+
 	public static int aumentarExp(JugadorP a, JugadorP b) {
 		return (int) (b.getExpBase() * b.getNivel() / 5 * Math.pow(2 * b.getNivel() + 10, 2.5)
 				/ Math.pow(b.getNivel() + a.getNivel() + 10, 2.5) + 1);

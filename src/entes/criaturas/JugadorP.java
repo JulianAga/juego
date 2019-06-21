@@ -2,6 +2,7 @@ package entes.criaturas;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -16,7 +17,12 @@ import herramientas.CalcularStats;
 import herramientas.Dado;
 import manager.InteraccionUsuario;
 
-public class JugadorP {
+public class JugadorP implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Estas variables representan las estadísticas individuales que pueden tener
@@ -301,10 +307,10 @@ public class JugadorP {
 		return a;
 	}
 
-	public static void grabar(int o) {
+	public static void grabar(JSONObject array) {
 		try {
-			FileWriter file = new FileWriter("personaje.json");
-			file.write(o);
+			FileWriter file = new FileWriter("stats.json");
+			file.write(array.toString());
 			file.flush();
 			file.close();
 
@@ -316,7 +322,7 @@ public class JugadorP {
 	public static String leer() {
 		String contenido = "";
 		try {
-			contenido = new String(Files.readAllBytes(Paths.get("personaje.json")));
+			contenido = new String(Files.readAllBytes(Paths.get("test1.json")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
