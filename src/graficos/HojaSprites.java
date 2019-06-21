@@ -17,6 +17,13 @@ public class HojaSprites {
 
 	// fin de la coleccion
 
+	/**
+	 * Define la ruta de la hoja de sprites
+	 * 
+	 * @param ruta  Directorio en el que se encuentra
+	 * @param ancho ancho del documento
+	 * @param alto  alto del documento
+	 */
 	public HojaSprites(final String ruta, final int ancho, final int alto) {
 		this.ancho = ancho;
 		this.alto = alto;

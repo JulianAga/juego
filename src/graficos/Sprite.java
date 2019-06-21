@@ -28,7 +28,7 @@ public final class Sprite {
 	public static final Sprite IZQUIERDA2 = new Sprite(32, 3, 2, 0, HojaSprites.jugador);
 	// Fin de la colección
 
-	//	Coleccion Sprites ENEMIGO
+	// Coleccion Sprites ENEMIGO
 	public static final Sprite STANDING = new Sprite(32, 0, 0, 1, HojaSprites.enemigo);
 
 	// Colección de sprites MAPA
@@ -58,6 +58,15 @@ public final class Sprite {
 	public static final Sprite PUERTA_SUPERIOR_CENTRAL = new Sprite(32, 8, 0, 0, HojaSprites.ejemplo);
 	// Fin coleccion sprites
 
+	/**
+	 * Carga el sprite especifico desde la hoja de sprites
+	 * 
+	 * @param lado    Tamaño de uno de los lados
+	 * @param columna columna donde se ubica
+	 * @param fila    Fila donde se ubica
+	 * @param modo    Modo a cargarlo (vertical, horizontal, al revez)
+	 * @param hoja    La hoja de sprites desde donde se carga
+	 */
 	public Sprite(final int lado, final int columna, final int fila, final int modo, final HojaSprites hoja) {
 		this.lado = lado;
 
@@ -128,6 +137,11 @@ public final class Sprite {
 		}
 	}
 
+	/**
+	 * Guarda los pixeles del sprite para despues elegir como cargarlo
+	 * 
+	 * @return
+	 */
 	private int[] inicializarPixelesTemporales() {
 		int[] pixelesTemporales = new int[lado * lado];
 		for (int y = 0; y < lado; y++) {
@@ -138,6 +152,11 @@ public final class Sprite {
 		return pixelesTemporales;
 	}
 
+	/**
+	 * Invierte en sentido horizontal
+	 * 
+	 * @param pixelesTemporales
+	 */
 	// 1
 	private void invertirX(int[] pixelesTemporales) {
 		int i = 0;

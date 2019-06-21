@@ -35,6 +35,13 @@ public abstract class Mapa {
 
 	}
 
+	/**
+	 * Muestra el mapa y lo va dibujando, tambien coloca los sprites
+	 * correspondientes dependiendo el lugar de la pantalla
+	 * 
+	 * @param compensacionX el movimiento que se haya hecho en X
+	 * @param compensacionY el movimiento que se haya hecho en Y
+	 */
 	public void mostrar(final int compensacionX, final int compensacionY, final Pantalla pantalla) { //
 
 		pantalla.estableceDiferencia(compensacionX, compensacionY);
@@ -58,6 +65,11 @@ public abstract class Mapa {
 		}
 	}
 
+	/**
+	 * Dependiendo que cuadro se indique que va en cierto lugar esta funcion lo
+	 * retorna
+	 * 
+	 */
 	public Cuadro obtenCuadro(final int x, final int y) {
 		if (x < 0 || y < 0 || x >= ancho || y >= ancho) {
 			return Cuadro.VACIO;

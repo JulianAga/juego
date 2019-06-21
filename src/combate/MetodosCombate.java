@@ -28,8 +28,8 @@ public class MetodosCombate {
 		rand = new Random();
 		while (a.getVidaActual() > 0 && b.getVidaActual() > 0)// Chequea que ambos contrincantes esten vivos.
 		{
-			a.mostrarVida();// aca tenemos que poner de quien es cada vida porque solo aparece el numero
-			b.mostrarVida();
+			a.getVidaActual();// aca tenemos que poner de quien es cada vida porque solo aparece el numero
+			b.getVidaActual();
 			h = InteraccionUsuario.ElegirHabilidad(a); // Ambos contrincantes eligen la
 			g = InteraccionUsuario.ElegirHabilidadAleatoria(b); // habilidad que vayan a usar.
 
@@ -74,7 +74,8 @@ public class MetodosCombate {
 	}
 
 	/**
-	 * Se le da la experiencia al personaje y si es necesario, se le sube el nivel. 
+	 * Se le da la experiencia al personaje y si es necesario, se le sube el nivel.
+	 * 
 	 * @param a
 	 * @param b
 	 */
@@ -89,6 +90,7 @@ public class MetodosCombate {
 
 	/**
 	 * Se produce el ataque de un personaje a otro.
+	 * 
 	 * @param a Personaje que efectua el ataque
 	 * @param b Personaje que recibe el ataque
 	 * @param h Habilidad que usa el atacante
@@ -116,12 +118,13 @@ public class MetodosCombate {
 
 	/**
 	 * Calcula el daño que hace cierta habilidad.
-	 * @param h Habilidad
+	 * 
+	 * @param h     Habilidad
 	 * @param dañoF Daño fisico
 	 * @param dañoM Daño magico
-	 * @param lvl Nivel
-	 * @param def Defensa
-	 * @param res Resistencia
+	 * @param lvl   Nivel
+	 * @param def   Defensa
+	 * @param res   Resistencia
 	 * @return Un entero que representa el daño que hace.
 	 */
 	public static int CalcularDaño(Habilidad h, int dañoF, int dañoM, int lvl, int def, int res) {
@@ -137,9 +140,11 @@ public class MetodosCombate {
 
 	/**
 	 * Calcula cual de los dos personajes tiene la prioridad de ataque.
+	 * 
 	 * @param a Personaje A
 	 * @param b Personaje B
-	 * @return Un entero que puede ser -1 si la prioridad la tiene el personaje A o 0 si la prioridad la tiene el personaje B.
+	 * @return Un entero que puede ser -1 si la prioridad la tiene el personaje A o
+	 *         0 si la prioridad la tiene el personaje B.
 	 */
 	private static int CalcularPrioridad(JugadorP a, JugadorP b) {
 		if (a.getVelocidad() > b.getVelocidad())

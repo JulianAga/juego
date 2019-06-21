@@ -1,5 +1,9 @@
 package entes.criaturas;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -122,9 +126,9 @@ public class JugadorP {
 		InteraccionUsuario.MostrarStatsPersonaje(stats);
 	}
 
-	public void mostrarVida() {
-		InteraccionUsuario.MostrarVida(getVidaMax(), getVidaActual(), null);
-	}
+//	public void mostrarVida() {
+//		InteraccionUsuario.MostrarVida(getVidaMax());
+//	}
 
 	/**
 	 * Resta la cantidad de vida que se pasa por parámetro.
@@ -281,24 +285,23 @@ public class JugadorP {
 		return stats;
 	}
 
-	public JSONObject getFormatoJSON() throws JSONException
-	{ 
-		JSONObject a = new JSONObject(); 
-		 a.put("Vida actual", this.getVidaActual()); 
-		 a.put("Vida max", this.getVidaMax());
-		 a.put("Resistencia fisica", this.getResistenciaF();
-		 a.put("Resistencia magica", this.getResistenciaM());
-		 a.put("Daño fisico", this.getDañoF());
-		 a.put("Daño magico", this.getDañoM());
-		 a.put("Velocidad", this.getVelocidad());
-		 a.put("Experiencia", this.getExp());
-		 a.put("Nivel", this.getNivel());
-		 a.put("Con Vida", this.conVida());
-		 a.put("Ubicacion", this.getUbicacion()); 
-		 return a; 
-		 }
-	
-	public static void grabar(JSONObject o) {
+	public JSONObject getFormatoJSON() throws JSONException {
+		JSONObject a = new JSONObject();
+		a.put("Vida actual", this.getVidaActual());
+		a.put("Vida max", this.getVidaMax());
+		a.put("Resistencia fisica", this.getResistenciaF());
+		a.put("Resistencia magica", this.getResistenciaM());
+		a.put("Daño fisico", this.getDañoF());
+		a.put("Daño magico", this.getDañoM());
+		a.put("Velocidad", this.getVelocidad());
+		a.put("Experiencia", this.getExp());
+		a.put("Nivel", this.getNivel());
+		a.put("Con Vida", this.conVida());
+		a.put("Ubicacion", this.getUbicacion());
+		return a;
+	}
+
+	public static void grabar(int o) {
 		try {
 			FileWriter file = new FileWriter("personaje.json");
 			file.write(o);
@@ -310,15 +313,11 @@ public class JugadorP {
 		}
 	}
 
-	public static String leer() 
-	{
+	public static String leer() {
 		String contenido = "";
-		try 
-		{
+		try {
 			contenido = new String(Files.readAllBytes(Paths.get("personaje.json")));
-		} 
-		catch (IOException e) 
-		{
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return contenido;

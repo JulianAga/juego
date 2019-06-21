@@ -54,39 +54,35 @@ public class Manager {
 		PuebloInicio puebloInicio = new PuebloInicio();
 		CaminoNorte caminoNorte = new CaminoNorte();
 		while (jugador.conVida()) {
-			InteraccionUsuario.MostrarVida(jugador.getVidaMax(), jugador.getVidaActual(), jugador);
+			InteraccionUsuario.MostrarVida(jugador.getVidaActual());
 			InteraccionUsuario.MostrarClaveValor(jugador.getStatsMap(), jugador.getNivelString());
 			InteraccionUsuario.MostrarClaveValor(jugador.getStatsMap(), jugador.getExpString());
-			if (jugador.getUbicacion().equals(Biblioteca.Mapa_PuebloInicio())) 
-			{
+			if (jugador.getUbicacion().equals(Biblioteca.Mapa_PuebloInicio())) {
 				PuebloInicio posada = new PuebloInicio();
 				opcion = InteraccionUsuario.OpcionesPuebloInicio();
-				
-				switch (opcion) 
-				{
+
+				switch (opcion) {
 				case 1:
 					puebloInicio.Posada(jugador);
 					break;
 				case 2:
 					puebloInicio.Avanzar(jugador);
-						posada.Posada(jugador);
-					break;
-				case 2:
-						posada.Avanzar(jugador);
+					posada.Posada(jugador);
 					break;
 				case 3:
-						posada.Retroceder(jugador);
+					posada.Avanzar(jugador);
+					break;
+				case 4:
+					posada.Retroceder(jugador);
 					break;
 				default:
 					InteraccionUsuario.OpcionInvalida();
 				}
 			}
-			if (jugador.getUbicacion().equals(Biblioteca.Mapa_CaminoNorte())) 
-			{
-				CaminoNorte caminoNorte = new CaminoNorte();
+			if (jugador.getUbicacion().equals(Biblioteca.Mapa_CaminoNorte())) {
+				CaminoNorte caminoNorte2 = new CaminoNorte();
 				opcion = InteraccionUsuario.OpcionesCamino(Biblioteca.Mapa_CaminoNorte());
-				switch (opcion) 
-				{
+				switch (opcion) {
 				case 1:
 					caminoNorte.Avanzar(jugador);
 					break;

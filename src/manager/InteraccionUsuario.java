@@ -9,9 +9,9 @@ import habilidades.Habilidad;
 import herramientas.Dado;
 
 /**
- * Esta clase posee toda la interacción que tiene el programa con el usuario. 
- * Es decir, posee las cosas que se le muestran por consola,
- * cuando un usuario debe elegir una opción y el inicio del juego.
+ * Esta clase posee toda la interacción que tiene el programa con el usuario. Es
+ * decir, posee las cosas que se le muestran por consola, cuando un usuario debe
+ * elegir una opción y el inicio del juego.
  *
  */
 public class InteraccionUsuario {
@@ -50,8 +50,12 @@ public class InteraccionUsuario {
 		stats.forEach((k, v) -> System.out.println(k + ": " + v));
 	}
 
-	public static void MostrarVida(int vidaMax, int vidaActual, JugadorP p) {
-		System.out.println(p.getClase() + " Vida: " + vidaActual + "/" + vidaMax);
+	public static void MostrarVida(int vidaMax) {
+		System.out.println(" Vida: " + "/" + vidaMax);
+	}
+
+	public static void MostrarVidaActual(int vida) {
+		System.out.println(" Vida: " + "/" + vida);
 	}
 
 	public static void MostrarMana(int mana) {

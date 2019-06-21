@@ -26,6 +26,13 @@ public final class Pantalla {
 		}
 	}
 
+	/**
+	 * Dibuja el cuadro en los pixeles correspondientes en pantalla
+	 * 
+	 * @param compensacionX posicion x del cuadro a dibujar
+	 * @param compensacionY posicion y del cuadro a dibujar
+	 * @param cuadro        Cuadro a dibujar
+	 */
 	public void mostrarCuadro(int compensacionX, int compensacionY, Cuadro cuadro) { // va dibujando los sprites en la
 																						// pantalla
 		compensacionX -= diferenciaX;
@@ -86,7 +93,7 @@ public final class Pantalla {
 			}
 		}
 	}
-	
+
 	public void mostrarEnemigo(int compensacionX, int compensacionY, Enemigo enemigo) {
 		compensacionX -= diferenciaX;
 		compensacionY -= diferenciaY;
@@ -108,10 +115,10 @@ public final class Pantalla {
 				int colorPixelJugador = enemigo.obtenSprite().pixeles[x + y * enemigo.obtenSprite().obtenLado()];
 				if (colorPixelJugador != 0xffffffff) {
 					pixeles[posicionX + posicionY * ancho] = colorPixelJugador;
-					}
 				}
 			}
 		}
+	}
 
 	public void estableceDiferencia(final int diferenciaX, final int diferenciaY) {
 		this.diferenciaX = diferenciaX;
