@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-// ACA IRIAN LOS IMPORT DEL JSON
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import habilidades.Habilidad;
 import herramientas.CalcularStats;
@@ -280,11 +281,47 @@ public class JugadorP {
 		return stats;
 	}
 
-	/*
-	 * no anda public JSONObject getFormatoJSON() throws JSONException { JSONObject
-	 * a = new JSONObject(); a.put("Stats", stats); a.put("StatsI", statsI);
-	 * a.put("Habilidades", habilidades); a.put("Con Vida", conVida);
-	 * a.put("Ubicacion", ubicacion); return a; }
-	 */
+	public JSONObject getFormatoJSON() throws JSONException
+	{ 
+		JSONObject a = new JSONObject(); 
+		 a.put("Vida actual", this.getVidaActual()); 
+		 a.put("Vida max", this.getVidaMax());
+		 a.put("Resistencia fisica", this.getResistenciaF();
+		 a.put("Resistencia magica", this.getResistenciaM());
+		 a.put("Daño fisico", this.getDañoF());
+		 a.put("Daño magico", this.getDañoM());
+		 a.put("Velocidad", this.getVelocidad());
+		 a.put("Experiencia", this.getExp());
+		 a.put("Nivel", this.getNivel());
+		 a.put("Con Vida", this.conVida());
+		 a.put("Ubicacion", this.getUbicacion()); 
+		 return a; 
+		 }
+	
+	public static void grabar(JSONObject o) {
+		try {
+			FileWriter file = new FileWriter("personaje.json");
+			file.write(o);
+			file.flush();
+			file.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static String leer() 
+	{
+		String contenido = "";
+		try 
+		{
+			contenido = new String(Files.readAllBytes(Paths.get("personaje.json")));
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+		return contenido;
+	}
 
 }
