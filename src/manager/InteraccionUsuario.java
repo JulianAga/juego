@@ -25,8 +25,13 @@ public class InteraccionUsuario {
 		System.out.println("2.Avanzar");
 		System.out.println("3.Retroceder");
 		int opcion = ElegirOpcion();
-//		clearScreen();
+		clearScreen();
 		return opcion;
+	}
+
+	public static void clearScreen() {
+		for (int i = 0; i < 50; i++)
+			System.out.println();
 	}
 
 	public static void FinDelCamino() {
@@ -64,6 +69,8 @@ public class InteraccionUsuario {
 
 	public static int MostrarHabilidades(JugadorP a) {
 		int contador = 0;
+		System.out.println("Habilidades de " + a.getClase());
+		System.out.println("Apreta 1 para usar tu habilidad");
 		ArrayList<Habilidad> habilidades = a.getHabilidades();
 		for (Habilidad h : habilidades) {
 			if (a.getNivel() >= h.getNivelDesbloqueo()) {

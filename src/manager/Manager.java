@@ -58,7 +58,7 @@ public class Manager {
 			InteraccionUsuario.MostrarClaveValor(jugador.getStatsMap(), jugador.getNivelString());
 			InteraccionUsuario.MostrarClaveValor(jugador.getStatsMap(), jugador.getExpString());
 			if (jugador.getUbicacion().equals(Biblioteca.Mapa_PuebloInicio())) {
-				PuebloInicio posada = new PuebloInicio();
+				// PuebloInicio posada = new PuebloInicio();
 				opcion = InteraccionUsuario.OpcionesPuebloInicio();
 
 				switch (opcion) {
@@ -67,13 +67,9 @@ public class Manager {
 					break;
 				case 2:
 					puebloInicio.Avanzar(jugador);
-					posada.Posada(jugador);
 					break;
 				case 3:
-					posada.Avanzar(jugador);
-					break;
-				case 4:
-					posada.Retroceder(jugador);
+					puebloInicio.Retroceder(jugador);
 					break;
 				default:
 					InteraccionUsuario.OpcionInvalida();

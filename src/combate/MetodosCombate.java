@@ -28,8 +28,13 @@ public class MetodosCombate {
 		rand = new Random();
 		while (a.getVidaActual() > 0 && b.getVidaActual() > 0)// Chequea que ambos contrincantes esten vivos.
 		{
-			a.getVidaActual();// aca tenemos que poner de quien es cada vida porque solo aparece el numero
-			b.getVidaActual();
+			// a.getVidaActual();// aca tenemos que poner de quien es cada vida porque solo
+			// aparece el numero
+			// b.getVidaActual();
+			System.out.println("Tu vida:");
+			InteraccionUsuario.MostrarVidaActual(a.getVidaActual());
+			System.out.println("La vida de tu enemigo:");
+			InteraccionUsuario.MostrarVidaActual(b.getVidaActual());
 			h = InteraccionUsuario.ElegirHabilidad(a); // Ambos contrincantes eligen la
 			g = InteraccionUsuario.ElegirHabilidadAleatoria(b); // habilidad que vayan a usar.
 

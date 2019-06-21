@@ -3,8 +3,9 @@ package entes.criaturas;
 import herramientas.Biblioteca;
 
 /**
- * Clase "Paladin" que hereda de "JugadorP". Los atributos que posee son estáticos y son las estadísticas base que tiene cada personaje de clase Paladin.
- * Sus stats base suman 500.
+ * Clase "Paladin" que hereda de "JugadorP". Los atributos que posee son
+ * estáticos y son las estadísticas base que tiene cada personaje de clase
+ * Paladin. Sus stats base suman 500.
  *
  */
 public class Paladin extends JugadorP {
@@ -20,8 +21,6 @@ public class Paladin extends JugadorP {
 	private final static String clase = "Ladron";
 	private final static int expBase = 100;
 
-
-
 	public Paladin() {
 		super();
 	}
@@ -33,7 +32,7 @@ public class Paladin extends JugadorP {
 	 */
 	public Paladin(int level) {
 		super(vidaMax, defensa, recistencia, dañoF, dañoM, velocidad, level, clase, expBase);
-		setHabilidades(Biblioteca.CargarHabilidadesLadron());
+		setHabilidades(Biblioteca.CargarHabilidadesPaladin());
 	}
 
 }
