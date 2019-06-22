@@ -24,7 +24,6 @@ public class CaminoNorte extends Camino {
 			flag = true;
 			ubicacion++;
 			InteraccionUsuario.AvanzasElCamino();
-			InteraccionUsuario.clearScreen();
 			numero = Dado.tirarDado(100);
 			if (numero < 20) 
 			{
@@ -34,7 +33,6 @@ public class CaminoNorte extends Camino {
 					opcion = InteraccionUsuario.Encounter(p.getClase());
 					if (opcion == 1) 
 					{
-						InteraccionUsuario.clearScreen();
 						// InteraccionUsuario.MostrarHabilidades(p);
 						MetodosCombate.Combate(a, p);
 						flag = false;
@@ -44,14 +42,11 @@ public class CaminoNorte extends Camino {
 						numero = Dado.tirarDado(50);
 						if (numero < 20) 
 						{
-							InteraccionUsuario.clearScreen();
 							InteraccionUsuario.NoPuedesEscapar();
 							MetodosCombate.Combate(a, p);
 							flag = false;
-						} 
-						else 
+						} else 
 						{
-							InteraccionUsuario.clearScreen();
 							InteraccionUsuario.LograsEscapar();
 							flag = false;
 						}
@@ -60,27 +55,20 @@ public class CaminoNorte extends Camino {
 					{
 						InteraccionUsuario.OpcionInvalida();
 					}
+					InteraccionUsuario.clearScreen();
 				}
-			} 
-			else if (numero < 50 && numero > 20)
-			{
+			} else if (numero < 50 && numero > 20) {
 				InteraccionUsuario.clearScreen();
 				inventario.almacenarEnInventario(InteraccionUsuario.pocion());
-			} 
-			else if (numero < 65 && numero > 50) 
-			{
+			} else if (numero < 65 && numero > 50) {
 				InteraccionUsuario.clearScreen();
 				inventario.almacenarEnInventario(InteraccionUsuario.cajaSorpresa());
 			}
 			inventario.mostrarInventario();
-		} 
-		else if (ubicacion >= 5) 
-		{
-			while (!flag) 
-			{
+		} else if (ubicacion >= 5) {
+			while (!flag) {
 				opcion = InteraccionUsuario.FinalCamino(Biblioteca.Mapa_PuebloSegundo());
-				switch (opcion) 
-				{
+				switch (opcion) {
 				case 1:
 					a.setUbicacion(Biblioteca.Mapa_PuebloSegundo());
 					flag = true;

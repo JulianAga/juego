@@ -5,10 +5,13 @@ import org.json.JSONObject;
 
 import biblioteca.escenario.CaminoNorte;
 import biblioteca.escenario.PuebloInicio;
+import combate.Inventario;
 import entes.criaturas.JugadorP;
 import entes.criaturas.Ladron;
 import entes.criaturas.Paladin;
 import herramientas.Biblioteca;
+import herramientas.CajaSorpresa;
+import herramientas.Pocion;
 
 /**
  * Esta clase es la encargada de poner a funcionar el juego.
@@ -65,6 +68,7 @@ public class Manager {
 		int opcion;
 		PuebloInicio puebloInicio = new PuebloInicio();
 		CaminoNorte caminoNorte = new CaminoNorte();
+		Inventario inventario = new Inventario();
 		while (jugador.conVida()) {
 			InteraccionUsuario.MostrarClase(jugador.getClase());
 			InteraccionUsuario.MostrarVida(jugador.getVidaMax(), jugador.getVidaActual());
@@ -105,10 +109,30 @@ public class Manager {
 					caminoNorte.Retroceder(jugador);
 					InteraccionUsuario.separador();
 					break;
+				case 3:
+					int limite = caminoNorte.inventario.mostrarInventario();
+
+					int opcionInventario;
+					do {
+						opcionInventario = InteraccionUsuario.ElegirOpcion();
+						System.out.println("Error, ingrese una opcion valida");
+					} while (opcionInventario > limite || opcionInventario < 0);
+					if (!caminoNorte.inventario.estaVacio()) {
+						Object obj = caminoNorte.inventario.elegirObjeto(opcionInventario);
+						if (obj instanceof Pocion) {
+							((Pocion) obj).tomar(jugador);
+						} else {
+							((CajaSorpresa) obj).sorpresa(jugador);
+						}
+					} else {
+						System.out.println("Inventario Vacio");
+					}
+					break;
 				}
 			}
 		}
 		System.out.println("Perdiste");
+		System.out.close();
 	}
 
 }
