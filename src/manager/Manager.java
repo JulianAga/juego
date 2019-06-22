@@ -22,6 +22,7 @@ public class Manager {
 		InteraccionUsuario.InicioJuego();
 		comando = InteraccionUsuario.ElegirOpcion();
 		JugadorP jugador = null;
+		InteraccionUsuario.separador();
 		while (!flag) {
 			switch (comando) {
 			case 1: // Crear Ladron.
@@ -65,9 +66,11 @@ public class Manager {
 		PuebloInicio puebloInicio = new PuebloInicio();
 		CaminoNorte caminoNorte = new CaminoNorte();
 		while (jugador.conVida()) {
+			InteraccionUsuario.MostrarClase(jugador.getClase());
 			InteraccionUsuario.MostrarVida(jugador.getVidaMax(), jugador.getVidaActual());
 			InteraccionUsuario.MostrarClaveValor(jugador.getStatsMap(), jugador.getNivelString());
 			InteraccionUsuario.MostrarClaveValor(jugador.getStatsMap(), jugador.getExpString());
+			InteraccionUsuario.espacio();
 			if (jugador.getUbicacion().equals(Biblioteca.Mapa_PuebloInicio())) {
 				// PuebloInicio posada = new PuebloInicio();
 				opcion = InteraccionUsuario.OpcionesPuebloInicio();
@@ -75,15 +78,19 @@ public class Manager {
 				switch (opcion) {
 				case 1:
 					puebloInicio.Posada(jugador);
+					InteraccionUsuario.separador();
 					break;
 				case 2:
 					puebloInicio.Avanzar(jugador);
+					InteraccionUsuario.separador();
 					break;
 				case 3:
 					puebloInicio.Retroceder(jugador);
+					InteraccionUsuario.separador();
 					break;
 				default:
 					InteraccionUsuario.OpcionInvalida();
+					InteraccionUsuario.separador();
 				}
 			}
 			if (jugador.getUbicacion().equals(Biblioteca.Mapa_CaminoNorte())) {
@@ -92,9 +99,11 @@ public class Manager {
 				switch (opcion) {
 				case 1:
 					caminoNorte.Avanzar(jugador);
+					InteraccionUsuario.separador();
 					break;
 				case 2:
 					caminoNorte.Retroceder(jugador);
+					InteraccionUsuario.separador();
 					break;
 				}
 			}

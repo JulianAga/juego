@@ -31,41 +31,65 @@ public class MetodosCombate {
 			// a.getVidaActual();// aca tenemos que poner de quien es cada vida porque solo
 			// aparece el numero
 			// b.getVidaActual();
-			System.out.println("Tu vida:");
 			InteraccionUsuario.MostrarVida(a.getVidaMax(), a.getVidaActual());
-			System.out.println("La vida de tu enemigo:");
-			InteraccionUsuario.MostrarVida(b.getVidaActual() ,b.getVidaActual());
+			InteraccionUsuario.MostrarVidaEnemigo(b.getVidaMax() ,b.getVidaActual());
+			InteraccionUsuario.separador();
 			h = InteraccionUsuario.ElegirHabilidad(a); // Ambos contrincantes eligen la
 			g = InteraccionUsuario.ElegirHabilidadAleatoria(b); // habilidad que vayan a usar.
 
-			if (h.getPrioridad() == g.getPrioridad()) {
-				if (1 == CalcularPrioridad(a, b)) {
+			if (h.getPrioridad() == g.getPrioridad()) 
+			{
+				if (1 == CalcularPrioridad(a, b)) 
+				{
+					InteraccionUsuario.clearScreen();
 					EfectuarAtaque(a, b, h);
 					if (SigueConVida(b))
 						EfectuarAtaque(b, a, g);
-				} else if (-1 == CalcularPrioridad(a, b)) {
+					InteraccionUsuario.espacio();
+				} 
+				else if (-1 == CalcularPrioridad(a, b)) 
+				{
+					InteraccionUsuario.clearScreen();
 					EfectuarAtaque(b, a, g);
 					if (SigueConVida(a))
 						EfectuarAtaque(a, b, h);
-				} else if (0 == CalcularPrioridad(a, b)) {
-					if (1 == PrioridadAleatoria()) {
+					InteraccionUsuario.espacio();
+				} 
+				else if (0 == CalcularPrioridad(a, b)) 
+				{
+					if (1 == PrioridadAleatoria())
+					{
+						InteraccionUsuario.clearScreen();
 						EfectuarAtaque(a, b, h);
 						if (SigueConVida(b))
 							EfectuarAtaque(b, a, g);
-					} else if (0 == PrioridadAleatoria()) {
+						InteraccionUsuario.espacio();
+					} 
+					else if (0 == PrioridadAleatoria()) 
+					{
+						InteraccionUsuario.clearScreen();
 						EfectuarAtaque(b, a, g);
 						if (SigueConVida(a))
 							EfectuarAtaque(a, b, h);
+						InteraccionUsuario.espacio();
 					}
 				}
-			} else if (h.getPrioridad() > g.getPrioridad()) {
+			} 
+			else if (h.getPrioridad() > g.getPrioridad()) 
+			{
+				InteraccionUsuario.clearScreen();
 				EfectuarAtaque(a, b, h);
 				if (SigueConVida(b))
 					EfectuarAtaque(b, a, g);
-			} else if (h.getPrioridad() < g.getPrioridad()) {
+				InteraccionUsuario.espacio();
+			} 
+			else if (h.getPrioridad() < g.getPrioridad()) 
+			{
+				InteraccionUsuario.clearScreen();
 				EfectuarAtaque(b, a, g);
 				if (SigueConVida(a))
 					EfectuarAtaque(a, b, h);
+				InteraccionUsuario.espacio();
 			}
 		}
 		if (a.getVidaActual() > 0) // Evalúa si el jugador ganó y le asigna la experiencia

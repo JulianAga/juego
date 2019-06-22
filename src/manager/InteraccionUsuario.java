@@ -58,8 +58,17 @@ public class InteraccionUsuario {
 	}
 
 	public static void MostrarVida(int vidaMax, int vidaActual) {
-		System.out.println(" Vida: " + vidaMax+ "/" + vidaActual);
+		System.out.println("Vida: " + vidaMax+ "/" + vidaActual);
 	}
+	
+	public static void MostrarVidaEnemigo(int vidaMax, int vidaActual) {
+		System.out.println("Vida de tu enemigo: " + vidaMax+ "/" + vidaActual);
+	}
+	
+	public static void MostrarClase(String clase) {
+		System.out.println("Clase: " + clase);
+	}
+
 
 	public static void MostrarMana(int mana) {
 		System.out.println("Mana: " + mana);
@@ -134,12 +143,14 @@ public class InteraccionUsuario {
 	public static Pocion pocion() {
 		Pocion pocion = new Pocion();
 		System.out.println("has encontrado una pocion");
+		System.out.println("");
 		return pocion;
 	}
 
 	public static CajaSorpresa cajaSorpresa() {
 		CajaSorpresa caja = new CajaSorpresa();
 		System.out.println("has encontrado una caja sorpresa");
+		System.out.println("");
 		return caja;
 
 	}
@@ -156,10 +167,12 @@ public class InteraccionUsuario {
 
 	public static void AvanzasElCamino() {
 		System.out.println("Avanzas por el camino.");
+		System.out.println("");		
 	}
 
 	public static void RetrocedesElCamino() {
 		System.out.println("Retrocedes por el camino.");
+		System.out.println("");
 	}
 
 	public static int FinalCamino(String puebloProximo) {
@@ -175,5 +188,14 @@ public class InteraccionUsuario {
 		System.out.println("Elegir Clase");
 		System.out.println("1.Ladrón");
 		System.out.println("2.Paladín");
+	}
+	
+	public static void separador() 
+	{
+		System.out.println("-------------------------------------------");
+	}
+	public static void espacio() 
+	{
+		System.out.println("");
 	}
 }

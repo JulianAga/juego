@@ -17,47 +17,70 @@ public class CaminoNorte extends Camino {
 
 	Inventario<Object> inventario = new Inventario<Object>();
 
-	public void Avanzar(JugadorP a) {
-		if (ubicacion < 5) {
+	public void Avanzar(JugadorP a) 
+	{
+		if (ubicacion < 5) 
+		{
 			flag = true;
 			ubicacion++;
 			InteraccionUsuario.AvanzasElCamino();
+			InteraccionUsuario.clearScreen();
 			numero = Dado.tirarDado(100);
-			if (numero < 20) {
+			if (numero < 20) 
+			{
 				p = new PerroSalvaje(Dado.tirarDado(dificultad));
-				while (flag == true) {
+				while (flag == true) 
+				{
 					opcion = InteraccionUsuario.Encounter(p.getClase());
-					if (opcion == 1) {
+					if (opcion == 1) 
+					{
+						InteraccionUsuario.clearScreen();
 						// InteraccionUsuario.MostrarHabilidades(p);
 						MetodosCombate.Combate(a, p);
 						flag = false;
-					} else if (opcion == 2) {
+					} 
+					else if (opcion == 2) 
+					{
 						numero = Dado.tirarDado(50);
-						if (numero < 20) {
+						if (numero < 20) 
+						{
+							InteraccionUsuario.clearScreen();
 							InteraccionUsuario.NoPuedesEscapar();
 							MetodosCombate.Combate(a, p);
 							flag = false;
-						} else {
+						} 
+						else 
+						{
+							InteraccionUsuario.clearScreen();
 							InteraccionUsuario.LograsEscapar();
 							flag = false;
 						}
-					} else {
+					} 
+					else 
+					{
 						InteraccionUsuario.OpcionInvalida();
 					}
 				}
-			} else if (numero < 50 && numero > 20) {
-
+			} 
+			else if (numero < 50 && numero > 20)
+			{
+				InteraccionUsuario.clearScreen();
 				inventario.almacenarEnInventario(InteraccionUsuario.pocion());
-
-			} else if (numero < 65 && numero > 50) {
-
+			} 
+			else if (numero < 65 && numero > 50) 
+			{
+				InteraccionUsuario.clearScreen();
 				inventario.almacenarEnInventario(InteraccionUsuario.cajaSorpresa());
 			}
 			inventario.mostrarInventario();
-		} else if (ubicacion >= 5) {
-			while (!flag) {
+		} 
+		else if (ubicacion >= 5) 
+		{
+			while (!flag) 
+			{
 				opcion = InteraccionUsuario.FinalCamino(Biblioteca.Mapa_PuebloSegundo());
-				switch (opcion) {
+				switch (opcion) 
+				{
 				case 1:
 					a.setUbicacion(Biblioteca.Mapa_PuebloSegundo());
 					flag = true;
