@@ -69,7 +69,7 @@ public class Manager {
 		CaminoNorte caminoNorte = new CaminoNorte();
 		Inventario inventario = new Inventario();
 		while (jugador.conVida()) {
-			InteraccionUsuario.MostrarVida(jugador.getVidaActual());
+			InteraccionUsuario.MostrarVida(jugador.getVidaMax(), jugador.getVidaActual());
 			InteraccionUsuario.MostrarClaveValor(jugador.getStatsMap(), jugador.getNivelString());
 			InteraccionUsuario.MostrarClaveValor(jugador.getStatsMap(), jugador.getExpString());
 			if (jugador.getUbicacion().equals(Biblioteca.Mapa_PuebloInicio())) {
