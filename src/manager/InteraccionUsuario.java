@@ -39,7 +39,7 @@ public class InteraccionUsuario {
 	}
 
 	public static void TeRecuperastePleno() {
-		System.out.println("Te recuperaste a pleno! ATR");
+		System.out.println("Recuperaste toda tu vida!");
 	}
 
 	public static void YaEstasDescansado() {
@@ -114,7 +114,7 @@ public class InteraccionUsuario {
 	}
 
 	public static void LograsEscapar() {
-		System.out.println("Logas escapar");
+		System.out.println("Logas escapar!");
 	}
 
 	public static void NoPuedesEscapar() {
@@ -124,7 +124,7 @@ public class InteraccionUsuario {
 	public static int Encounter(String clase) {
 		int numero;
 		System.out.println("Te encontrás con un " + clase + "....");
-		System.out.println("1.Te plantas" + "  " + "2.Rajás?");
+		System.out.println("1. Pelear !" + "  " + "2. Huir ");
 		numero = ElegirOpcion();
 		return numero;
 	}
@@ -134,17 +134,17 @@ public class InteraccionUsuario {
 	}
 
 	public static void pocion() {
-		System.out.println("has encontrado una pocion");
+		System.out.println("Has encontrado una pocion.");
 	}
 
 	public static void cajaSorpresa() {
-		System.out.println("has encontrado una caja sorpresa");
+		System.out.println("Has encontrado una caja sorpresa!");
 
 	}
 
 	// Opciones del camino
 	public static int OpcionesCamino(String camino) {
-		System.out.println("Estas en el camino " + camino + "....Que deseas hacer?");
+		System.out.println("Estás en el camino " + camino + "....Que deseas hacer?");
 		System.out.println("1.Caminar norte");
 		System.out.println("2.Caminar sur");
 		int opcion = ElegirOpcion();
