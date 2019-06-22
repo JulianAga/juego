@@ -6,7 +6,9 @@ import java.util.Scanner;
 
 import entes.criaturas.JugadorP;
 import habilidades.Habilidad;
+import herramientas.CajaSorpresa;
 import herramientas.Dado;
+import herramientas.Pocion;
 
 /**
  * Esta clase posee toda la interacción que tiene el programa con el usuario. Es
@@ -133,13 +135,16 @@ public class InteraccionUsuario {
 		System.out.println("Saliste victorioso.");
 	}
 
-	public static void pocion() {
+	public static Pocion pocion() {
+		Pocion pocion = new Pocion();
 		System.out.println("has encontrado una pocion");
+		return pocion;
 	}
 
-	public static void cajaSorpresa() {
+	public static CajaSorpresa cajaSorpresa() {
+		CajaSorpresa caja = new CajaSorpresa();
 		System.out.println("has encontrado una caja sorpresa");
-
+		return caja;
 	}
 
 	// Opciones del camino
@@ -147,6 +152,7 @@ public class InteraccionUsuario {
 		System.out.println("Estas en el camino " + camino + "....Que deseas hacer?");
 		System.out.println("1.Caminar norte");
 		System.out.println("2.Caminar sur");
+		System.out.println("3.Usar inventario");
 		int opcion = ElegirOpcion();
 		return opcion;
 	}

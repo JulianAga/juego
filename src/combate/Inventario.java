@@ -39,4 +39,10 @@ public class Inventario<T> {
 		return mensaje;
 	}
 
+	public void mostrarInventario() {
+		for (T i : objetos) {
+			System.out.println(i.toString());
+		}
+	}
+
 }
