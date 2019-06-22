@@ -32,9 +32,9 @@ public class MetodosCombate {
 			// aparece el numero
 			// b.getVidaActual();
 			System.out.println("Tu vida:");
-			InteraccionUsuario.MostrarVidaActual(a.getVidaActual());
+			InteraccionUsuario.MostrarVida(a.getVidaMax(), a.getVidaActual());
 			System.out.println("La vida de tu enemigo:");
-			InteraccionUsuario.MostrarVidaActual(b.getVidaActual());
+			InteraccionUsuario.MostrarVida(b.getVidaActual() ,b.getVidaActual());
 			h = InteraccionUsuario.ElegirHabilidad(a); // Ambos contrincantes eligen la
 			g = InteraccionUsuario.ElegirHabilidadAleatoria(b); // habilidad que vayan a usar.
 

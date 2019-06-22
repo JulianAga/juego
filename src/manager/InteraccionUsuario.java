@@ -57,12 +57,8 @@ public class InteraccionUsuario {
 		stats.forEach((k, v) -> System.out.println(k + ": " + v));
 	}
 
-	public static void MostrarVida(int vidaMax) {
-		System.out.println(" Vida: " + "/" + vidaMax);
-	}
-
-	public static void MostrarVidaActual(int vida) {
-		System.out.println(" Vida: " + "/" + vida);
+	public static void MostrarVida(int vidaMax, int vidaActual) {
+		System.out.println(" Vida: " + vidaMax+ "/" + vidaActual);
 	}
 
 	public static void MostrarMana(int mana) {
