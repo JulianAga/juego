@@ -1,5 +1,7 @@
 package herramientas;
 
+import entes.criaturas.JugadorP;
+
 public class Pocion {
 
 	int vida;
@@ -8,7 +10,7 @@ public class Pocion {
 		vida = Dado.numeroAleatorio(10);
 	}
 
-	public int tomar() {
-		return vida;
+	public void tomar(JugadorP j) {
+		j.setVidaActual(j.getVidaActual() + vida);
 	}
 }

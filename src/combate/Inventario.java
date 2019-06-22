@@ -27,6 +27,14 @@ public class Inventario<T> {
 		return mensaje;
 	}
 
+	public boolean estaVacio() {
+		boolean flag = false;
+		if (objetos.isEmpty()) {
+			flag = true;
+		}
+		return flag;
+	}
+
 	public String removerDelInventario(int index) {
 		String mensaje = null;
 
@@ -39,10 +47,17 @@ public class Inventario<T> {
 		return mensaje;
 	}
 
-	public void mostrarInventario() {
+	public int mostrarInventario() {
+		int index = 0;
 		for (T i : objetos) {
-			System.out.println(i.toString());
+			System.out.println("Objeto numero " + index + " " + i.getClass());
+			index++;
 		}
+		return index;
+	}
+
+	public T elegirObjeto(int i) {
+		return objetos.get(i);
 	}
 
 }

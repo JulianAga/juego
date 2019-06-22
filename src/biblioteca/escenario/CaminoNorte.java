@@ -10,12 +10,13 @@ import manager.InteraccionUsuario;
 
 public class CaminoNorte extends Camino {
 
+	public Inventario<Object> inventario;
+
 	public CaminoNorte() {
 		dificultad = 2;
 		ubicacion = 0;
+		inventario = new Inventario<Object>();
 	}
-
-	Inventario<Object> inventario = new Inventario<Object>();
 
 	public void Avanzar(JugadorP a) {
 		if (ubicacion < 5) {
@@ -53,7 +54,7 @@ public class CaminoNorte extends Camino {
 
 				inventario.almacenarEnInventario(InteraccionUsuario.cajaSorpresa());
 			}
-			inventario.mostrarInventario();
+//			inventario.mostrarInventario();
 		} else if (ubicacion >= 5) {
 			while (!flag) {
 				opcion = InteraccionUsuario.FinalCamino(Biblioteca.Mapa_PuebloSegundo());

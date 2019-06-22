@@ -7,6 +7,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="recursos"/>
-	<classpathentry kind="lib" path="C:/Users/Flor/Documents/juego/java-json (2).jar"/>
+	<classpathentry kind="lib" path="src/java-json.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
