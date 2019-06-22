@@ -4,14 +4,7 @@ import java.util.ArrayList;
 
 import habilidades.Habilidad;
 
-public class Biblioteca<T> {
-
-	T obj;
-
-	public String obtenerClase(T o) {
-		obj = o;
-		return toString() + o.getClass();
-	}
+public class Biblioteca {
 
 	/**
 	 * Escenario. Acá se retornan los strings para usar más adelante.

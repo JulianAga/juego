@@ -1,5 +1,6 @@
 package biblioteca.escenario;
 
+import combate.Inventario;
 import combate.MetodosCombate;
 import entes.criaturas.JugadorP;
 import entes.criaturas.PerroSalvaje;
@@ -14,13 +15,15 @@ public class CaminoNorte extends Camino {
 		ubicacion = 0;
 	}
 
+	Inventario<Object> inventario = new Inventario<Object>();
+
 	public void Avanzar(JugadorP a) {
 		if (ubicacion < 5) {
 			flag = true;
 			ubicacion++;
 			InteraccionUsuario.AvanzasElCamino();
 			numero = Dado.tirarDado(100);
-			if (0 < 20) {
+			if (numero < 20) {
 				p = new PerroSalvaje(Dado.tirarDado(dificultad));
 				while (flag == true) {
 					opcion = InteraccionUsuario.Encounter(p.getClase());
@@ -42,6 +45,11 @@ public class CaminoNorte extends Camino {
 						InteraccionUsuario.OpcionInvalida();
 					}
 				}
+			} else if (numero < 50 && numero > 20) {
+				InteraccionUsuario.pocion();
+			} else if (numero < 65 && numero > 50) {
+				InteraccionUsuario.cajaSorpresa();
+//				inventario.almacenarEnInventario(o);
 			}
 		} else if (ubicacion >= 5) {
 			while (!flag) {

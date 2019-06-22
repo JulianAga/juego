@@ -133,6 +133,15 @@ public class InteraccionUsuario {
 		System.out.println("Saliste victorioso.");
 	}
 
+	public static void pocion() {
+		System.out.println("has encontrado una pocion");
+	}
+
+	public static void cajaSorpresa() {
+		System.out.println("has encontrado una caja sorpresa");
+
+	}
+
 	// Opciones del camino
 	public static int OpcionesCamino(String camino) {
 		System.out.println("Estas en el camino " + camino + "....Que deseas hacer?");
