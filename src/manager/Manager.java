@@ -9,6 +9,7 @@ import combate.Inventario;
 import entes.criaturas.JugadorP;
 import entes.criaturas.Ladron;
 import entes.criaturas.Paladin;
+import excepciones.Excepcion;
 import herramientas.Biblioteca;
 import herramientas.CajaSorpresa;
 import herramientas.Pocion;
@@ -17,13 +18,17 @@ import herramientas.Pocion;
  * Esta clase es la encargada de poner a funcionar el juego.
  *
  */
-public class Manager {
+public class Manager extends Excepcion {
 
 	public static void InicioJuego() {
-		int comando;
+		int comando = 0;
 		boolean flag = false;
 		InteraccionUsuario.InicioJuego();
-		comando = InteraccionUsuario.ElegirOpcion();
+		do {
+
+			comando = InteraccionUsuario.ElegirOpcion();
+
+		} while (comando > 2 || comando < 0);
 		JugadorP jugador = null;
 		InteraccionUsuario.separador();
 		while (!flag) {
@@ -113,12 +118,13 @@ public class Manager {
 					int limite = caminoNorte.inventario.mostrarInventario();
 
 					int opcionInventario;
-					do {
-						opcionInventario = InteraccionUsuario.ElegirOpcion();
-						System.out.println("Error, ingrese una opcion valida");
-					} while (opcionInventario > limite || opcionInventario < 0);
 					if (!caminoNorte.inventario.estaVacio()) {
+						do {
+							opcionInventario = InteraccionUsuario.ElegirOpcion();
+							System.out.println("Error, ingrese una opcion valida");
+						} while (opcionInventario > limite || opcionInventario < 0);
 						Object obj = caminoNorte.inventario.elegirObjeto(opcionInventario);
+						System.out.println(caminoNorte.inventario.removerDelInventario(opcionInventario));
 						if (obj instanceof Pocion) {
 							((Pocion) obj).tomar(jugador);
 						} else {

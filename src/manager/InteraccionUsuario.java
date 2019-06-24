@@ -5,6 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 import entes.criaturas.JugadorP;
+import excepciones.Excepcion;
 import habilidades.Habilidad;
 import herramientas.CajaSorpresa;
 import herramientas.Dado;
@@ -16,8 +17,9 @@ import herramientas.Pocion;
  * elegir una opción y el inicio del juego.
  *
  */
-public class InteraccionUsuario {
+public class InteraccionUsuario extends Excepcion {
 
+	public final static int CLASES = 2;
 	private static Scanner scr;
 
 	// Metodos utilizados en pueblos.
@@ -58,17 +60,16 @@ public class InteraccionUsuario {
 	}
 
 	public static void MostrarVida(int vidaMax, int vidaActual) {
-		System.out.println("Vida: " + vidaMax+ "/" + vidaActual);
+		System.out.println("Vida: " + vidaMax + "/" + vidaActual);
 	}
-	
+
 	public static void MostrarVidaEnemigo(int vidaMax, int vidaActual) {
-		System.out.println("Vida de tu enemigo: " + vidaMax+ "/" + vidaActual);
+		System.out.println("Vida de tu enemigo: " + vidaMax + "/" + vidaActual);
 	}
-	
+
 	public static void MostrarClase(String clase) {
 		System.out.println("Clase: " + clase);
 	}
-
 
 	public static void MostrarMana(int mana) {
 		System.out.println("Mana: " + mana);
@@ -106,8 +107,14 @@ public class InteraccionUsuario {
 	}
 
 	public static int ElegirOpcion() {
-		scr = new Scanner(System.in);
-		return scr.nextInt();
+		try {
+			scr = new Scanner(System.in);
+			return scr.nextInt();
+		} catch (Exception e) {
+			System.out.println(((Excepcion) e).entradaErronea());
+			return scr.nextInt();
+		}
+
 	}
 	// Metodos varios
 
@@ -167,7 +174,7 @@ public class InteraccionUsuario {
 
 	public static void AvanzasElCamino() {
 		System.out.println("Avanzas por el camino.");
-		System.out.println("");		
+		System.out.println("");
 	}
 
 	public static void RetrocedesElCamino() {
@@ -189,13 +196,12 @@ public class InteraccionUsuario {
 		System.out.println("1.Ladrón");
 		System.out.println("2.Paladín");
 	}
-	
-	public static void separador() 
-	{
+
+	public static void separador() {
 		System.out.println("-------------------------------------------");
 	}
-	public static void espacio() 
-	{
+
+	public static void espacio() {
 		System.out.println("");
 	}
 }

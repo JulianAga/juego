@@ -50,7 +50,7 @@ public class Inventario<T> {
 	public int mostrarInventario() {
 		int index = 0;
 		for (T i : objetos) {
-			System.out.println("Objeto numero " + index + " " + i.getClass());
+			System.out.println("Objeto numero " + index + " " + i.getClass().getSimpleName());
 			index++;
 		}
 		return index;

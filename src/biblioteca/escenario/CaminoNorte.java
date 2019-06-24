@@ -15,7 +15,7 @@ public class CaminoNorte extends Camino {
 		ubicacion = 0;
 	}
 
-	Inventario<Object> inventario = new Inventario<Object>();
+	public Inventario<Object> inventario = new Inventario<Object>();
 
 	public void Avanzar(JugadorP a) 
 	{
