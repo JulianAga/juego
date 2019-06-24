@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import control.Teclado;
 import entes.criaturas.Enemigo;
 import entes.criaturas.Jugador;
+import excepciones.OpcionInvalidoException;
 import graficos.Pantalla;
 import graficos.Sprite;
 import mapa.Mapa;
@@ -106,7 +107,7 @@ public class Juego extends Canvas implements Runnable {
 		}
 	}
 
-	private void actualizar() {
+	private void actualizar() throws OpcionInvalidoException {
 		teclado.actualizar();
 
 		jugador.actualizar();
@@ -184,7 +185,12 @@ public class Juego extends Canvas implements Runnable {
 
 			while (delta >= 1) // actualiza el juego cuando delta es uno
 			{
-				actualizar();
+				try {
+					actualizar();
+				} catch (OpcionInvalidoException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				delta--;
 			}
 

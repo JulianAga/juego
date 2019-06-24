@@ -8,6 +8,7 @@ import java.util.LinkedHashMap;
 
 import control.Teclado;
 import entes.Ente;
+import excepciones.OpcionInvalidoException;
 import graficos.Pantalla;
 import graficos.Sprite;
 import habilidades.Habilidad;
@@ -302,7 +303,7 @@ public class Jugador extends Criatura {
 //	}
 
 	@Override
-	public void actualizar() {
+	public void actualizar() throws OpcionInvalidoException {
 
 		int desplazamientoX = 0;
 		int desplazamientoY = 0;
@@ -401,7 +402,7 @@ public class Jugador extends Criatura {
 		// perderVida();
 
 		if ((x >= 170 && x <= 265) && y <= 105) {
-			pelea.InicioJuego();
+			Manager.InicioJuego();
 
 			if (x <= 123 && y <= 123) {
 				Manager.InicioJuego();

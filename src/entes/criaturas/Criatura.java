@@ -1,6 +1,7 @@
 package entes.criaturas;
 
 import entes.Ente;
+import excepciones.OpcionInvalidoException;
 import graficos.Sprite;
 
 public abstract class Criatura extends Ente {
@@ -13,7 +14,7 @@ public abstract class Criatura extends Ente {
 	}
 
 	@Override
-	public void actualizar() {
+	public void actualizar() throws OpcionInvalidoException {
 	}
 
 	@Override

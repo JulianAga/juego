@@ -9,7 +9,7 @@ import combate.Inventario;
 import entes.criaturas.JugadorP;
 import entes.criaturas.Ladron;
 import entes.criaturas.Paladin;
-import excepciones.Excepcion;
+import excepciones.OpcionInvalidoException;
 import herramientas.Biblioteca;
 import herramientas.CajaSorpresa;
 import herramientas.Pocion;
@@ -18,17 +18,18 @@ import herramientas.Pocion;
  * Esta clase es la encargada de poner a funcionar el juego.
  *
  */
-public class Manager extends Excepcion {
+public class Manager{
 
-	public static void InicioJuego() {
+	public static void InicioJuego() throws OpcionInvalidoException
+	{
 		int comando = 0;
 		boolean flag = false;
 		InteraccionUsuario.InicioJuego();
-		do {
-
-			comando = InteraccionUsuario.ElegirOpcion();
-
-		} while (comando > 2 || comando < 0);
+		comando = InteraccionUsuario.ElegirOpcion(); 
+		if((comando != 1 && comando != 2)) 
+		{
+			throw new OpcionInvalidoException("Opcion invalida");
+		}
 		JugadorP jugador = null;
 		InteraccionUsuario.separador();
 		while (!flag) {

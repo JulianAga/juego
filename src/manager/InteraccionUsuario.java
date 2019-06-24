@@ -5,7 +5,6 @@ import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 import entes.criaturas.JugadorP;
-import excepciones.Excepcion;
 import habilidades.Habilidad;
 import herramientas.CajaSorpresa;
 import herramientas.Dado;
@@ -17,7 +16,7 @@ import herramientas.Pocion;
  * elegir una opción y el inicio del juego.
  *
  */
-public class InteraccionUsuario extends Excepcion {
+public class InteraccionUsuario{
 
 	public final static int CLASES = 2;
 	private static Scanner scr;
@@ -111,7 +110,7 @@ public class InteraccionUsuario extends Excepcion {
 			scr = new Scanner(System.in);
 			return scr.nextInt();
 		} catch (Exception e) {
-			System.out.println(((Excepcion) e).entradaErronea());
+			System.out.println();
 			return scr.nextInt();
 		}
 

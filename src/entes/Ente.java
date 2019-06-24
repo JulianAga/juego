@@ -1,5 +1,6 @@
 package entes;
 
+import excepciones.OpcionInvalidoException;
 import mapa.Mapa;
 
 public abstract class Ente {
@@ -11,7 +12,7 @@ public abstract class Ente {
 
 	protected static Mapa mapa;
 
-	public void actualizar() {
+	public void actualizar() throws OpcionInvalidoException {
 	}
 
 	public void mostrar() {
