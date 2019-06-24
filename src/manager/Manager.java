@@ -18,16 +18,14 @@ import herramientas.Pocion;
  * Esta clase es la encargada de poner a funcionar el juego.
  *
  */
-public class Manager{
+public class Manager {
 
-	public static void InicioJuego() throws OpcionInvalidoException
-	{
+	public static void InicioJuego() throws OpcionInvalidoException {
 		int comando = 0;
 		boolean flag = false;
 		InteraccionUsuario.InicioJuego();
-		comando = InteraccionUsuario.ElegirOpcion(); 
-		if((comando != 1 && comando != 2)) 
-		{
+		comando = InteraccionUsuario.ElegirOpcion();
+		if ((comando != 1 && comando != 2)) {
 			throw new OpcionInvalidoException("Opcion invalida");
 		}
 		JugadorP jugador = null;
@@ -116,18 +114,18 @@ public class Manager{
 					InteraccionUsuario.separador();
 					break;
 				case 3:
-					int limite = caminoNorte.inventario.mostrarInventario();
+					int limite = jugador.inventario.mostrarInventario();
 
 					int opcionInventario;
-					if (!caminoNorte.inventario.estaVacio()) {
+					if (!jugador.inventario.estaVacio()) {
 						do {
 							opcionInventario = InteraccionUsuario.ElegirOpcion();
 							if (opcionInventario >= limite || opcionInventario < 0) {
 								System.out.println("Error, ingrese una opcion valida");
 							}
 						} while (opcionInventario >= limite || opcionInventario < 0);
-						Object obj = caminoNorte.inventario.elegirObjeto(opcionInventario);
-						System.out.println(caminoNorte.inventario.removerDelInventario(opcionInventario));
+						Object obj = jugador.inventario.elegirObjeto(opcionInventario);
+						System.out.println(jugador.inventario.removerDelInventario(opcionInventario));
 						if (obj instanceof Pocion) {
 							((Pocion) obj).tomar(jugador);
 						} else {

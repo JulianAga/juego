@@ -1,6 +1,5 @@
 package biblioteca.escenario;
 
-import combate.Inventario;
 import combate.MetodosCombate;
 import entes.criaturas.JugadorP;
 import entes.criaturas.PerroSalvaje;
@@ -15,56 +14,43 @@ public class CaminoNorte extends Camino {
 		ubicacion = 0;
 	}
 
-	public Inventario<Object> inventario = new Inventario<Object>();
-
-	public void Avanzar(JugadorP a) 
-	{
-		if (ubicacion < 5) 
-		{
+	public void Avanzar(JugadorP a) {
+		if (ubicacion < 5) {
 			flag = true;
 			ubicacion++;
 			InteraccionUsuario.AvanzasElCamino();
 			numero = Dado.tirarDado(100);
-			if (numero < 20) 
-			{
+			if (numero < 20) {
 				p = new PerroSalvaje(Dado.tirarDado(dificultad));
-				while (flag == true) 
-				{
+				while (flag == true) {
 					opcion = InteraccionUsuario.Encounter(p.getClase());
-					if (opcion == 1) 
-					{
+					if (opcion == 1) {
 						// InteraccionUsuario.MostrarHabilidades(p);
 						MetodosCombate.Combate(a, p);
 						flag = false;
-					} 
-					else if (opcion == 2) 
-					{
+					} else if (opcion == 2) {
 						numero = Dado.tirarDado(50);
-						if (numero < 20) 
-						{
+						if (numero < 20) {
 							InteraccionUsuario.NoPuedesEscapar();
 							MetodosCombate.Combate(a, p);
 							flag = false;
-						} else 
-						{
+						} else {
 							InteraccionUsuario.LograsEscapar();
 							flag = false;
 						}
-					} 
-					else 
-					{
+					} else {
 						InteraccionUsuario.OpcionInvalida();
 					}
 					InteraccionUsuario.clearScreen();
 				}
 			} else if (numero < 50 && numero > 20) {
 				InteraccionUsuario.clearScreen();
-				inventario.almacenarEnInventario(InteraccionUsuario.pocion());
+				a.inventario.almacenarEnInventario(InteraccionUsuario.pocion());
 			} else if (numero < 65 && numero > 50) {
 				InteraccionUsuario.clearScreen();
-				inventario.almacenarEnInventario(InteraccionUsuario.cajaSorpresa());
+				a.inventario.almacenarEnInventario(InteraccionUsuario.cajaSorpresa());
 			}
-			inventario.mostrarInventario();
+			a.inventario.mostrarInventario();
 		} else if (ubicacion >= 5) {
 			while (!flag) {
 				opcion = InteraccionUsuario.FinalCamino(Biblioteca.Mapa_PuebloSegundo());

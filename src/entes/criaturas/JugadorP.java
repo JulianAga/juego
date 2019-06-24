@@ -12,6 +12,7 @@ import java.util.LinkedHashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import combate.Inventario;
 import habilidades.Habilidad;
 import herramientas.CalcularStats;
 import herramientas.Dado;
@@ -51,6 +52,8 @@ public class JugadorP implements Serializable {
 	private final String nivel = "Nivel";
 
 	private ArrayList<Habilidad> habilidades;
+
+	public Inventario<Object> inventario;
 
 	private boolean conVida;
 
@@ -110,11 +113,14 @@ public class JugadorP implements Serializable {
 		habilidades = new ArrayList<Habilidad>();
 		conVida = true;
 
+		inventario = new Inventario<Object>();
+
 	}
 
 	/**
 	 * Recupera toda la vida perdida del personaje hasta llenarla por completo.
 	 */
+
 	public void RecuperarSalud() {
 		setVidaActual(getVidaMax());
 	}
