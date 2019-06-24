@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -316,10 +317,23 @@ public class JugadorP implements Serializable {
 		a.put("Ubicacion", this.getUbicacion());
 		return a;
 	}
+	
+	public JSONObject getFormatoJSONInventario() throws JSONException{
+		JSONObject a = new JSONObject();
+		a.put("Inventario", this.obtenerInventario());
+		return a;
+	}
+	
+	public JSONArray getFormatoJSONArray() throws JSONException{
+		JSONArray arr = new JSONArray();
+        arr.put(this.getFormatoJSON());
+        arr.put(this.getFormatoJSONInventario());
+		return arr;
+	}
 
-	public static void grabar(JSONObject array) {
+	public static void grabar(JSONArray array) {
 		try {
-			FileWriter file = new FileWriter("stats.json");
+			FileWriter file = new FileWriter("statsinventario.json");
 			file.write(array.toString());
 			file.flush();
 			file.close();

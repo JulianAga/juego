@@ -1,5 +1,6 @@
 package manager;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -50,14 +51,14 @@ public class Manager {
 				break;
 			}
 		}
-		JSONObject stats = new JSONObject();
+		JSONArray arr = new JSONArray();
 		try {
-			stats = jugador.getFormatoJSON();
+			arr = jugador.getFormatoJSONArray();
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		jugador.grabar(stats);
+		jugador.grabar(arr);
 	}
 
 	public static void FinJuego() {
