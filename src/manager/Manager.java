@@ -24,15 +24,13 @@ public class Manager{
 	{
 		int comando = 0;
 		boolean flag = false;
-		InteraccionUsuario.InicioJuego();
-		comando = InteraccionUsuario.ElegirOpcion(); 
-		if((comando != 1 && comando != 2)) 
-		{
-			throw new OpcionInvalidoException("Opcion invalida");
-		}
+		
+		 
 		JugadorP jugador = null;
 		InteraccionUsuario.separador();
 		while (!flag) {
+			InteraccionUsuario.InicioJuego();
+			comando = InteraccionUsuario.ElegirOpcion();
 			switch (comando) {
 			case 1: // Crear Ladron.
 				jugador = new Ladron(1);
@@ -45,11 +43,10 @@ public class Manager{
 				jugador.setUbicacion(Biblioteca.Mapa_PuebloInicio());
 				flag = true;
 				Juego(jugador);
-				break;
+			break;
 			default:
 				InteraccionUsuario.OpcionInvalida();
-				flag = true;
-				break;
+			break;
 			}
 		}
 		JSONObject stats = new JSONObject();

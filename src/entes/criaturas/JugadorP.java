@@ -17,7 +17,7 @@ import herramientas.CalcularStats;
 import herramientas.Dado;
 import manager.InteraccionUsuario;
 
-public class JugadorP implements Serializable {
+public class JugadorP implements Serializable, Personaje {
 
 	/**
 	 * 
