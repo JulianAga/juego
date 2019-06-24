@@ -24,14 +24,11 @@ public class Manager {
 	public static void InicioJuego() throws OpcionInvalidoException {
 		int comando = 0;
 		boolean flag = false;
-		InteraccionUsuario.InicioJuego();
-		comando = InteraccionUsuario.ElegirOpcion();
-		if ((comando != 1 && comando != 2)) {
-			throw new OpcionInvalidoException("Opcion invalida");
-		}
 		JugadorP jugador = null;
-		InteraccionUsuario.separador();
 		while (!flag) {
+			InteraccionUsuario.InicioJuego();
+			comando = InteraccionUsuario.ElegirOpcion(); 
+			InteraccionUsuario.separador();
 			switch (comando) {
 			case 1: // Crear Ladron.
 				jugador = new Ladron(1);
@@ -47,8 +44,7 @@ public class Manager {
 				break;
 			default:
 				InteraccionUsuario.OpcionInvalida();
-				flag = true;
-				break;
+			break;
 			}
 		}
 		JSONArray arr = new JSONArray();

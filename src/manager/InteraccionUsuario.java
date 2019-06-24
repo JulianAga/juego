@@ -5,6 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 import entes.criaturas.JugadorP;
+import excepciones.OpcionInvalidoException;
 import habilidades.Habilidad;
 import herramientas.CajaSorpresa;
 import herramientas.Dado;
@@ -105,16 +106,40 @@ public class InteraccionUsuario{
 		return a.getHabilidad(opcion - 1);
 	}
 
-	public static int ElegirOpcion() {
-		try {
-			scr = new Scanner(System.in);
-			return scr.nextInt();
-		} catch (Exception e) {
-			System.out.println();
-			return scr.nextInt();
+	public static int ElegirOpcion() 
+	{
+		int num = 0;
+		scr = new Scanner(System.in);
+		String cadena = scr.nextLine();
+		try
+		{
+			if(Validacion(cadena))
+			{
+				num = Integer.parseInt(cadena);
+			}
 		}
-
+		catch(OpcionInvalidoException e)
+		{
+			System.out.println(e);
+			num = ElegirOpcion();
+		}
+		return num;
 	}
+	
+	public static boolean Validacion (String cadena) throws OpcionInvalidoException 
+	{
+		int num;
+		try
+		{
+			num = Integer.parseInt(cadena);
+			return true;
+		}
+		catch(Exception e)
+		{
+			throw new OpcionInvalidoException("Opcion Invalida", cadena);
+		}
+	}
+
 	// Metodos varios
 
 	public static void OpcionInvalida() {
