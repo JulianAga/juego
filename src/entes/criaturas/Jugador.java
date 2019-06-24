@@ -12,8 +12,6 @@ import excepciones.OpcionInvalidoException;
 import graficos.Pantalla;
 import graficos.Sprite;
 import habilidades.Habilidad;
-import herramientas.CalcularStats;
-import herramientas.Dado;
 import manager.Manager;
 import mapa.Mapa;
 
@@ -68,40 +66,12 @@ public class Jugador extends Criatura {
 	 * Crea una instancia de la clase Jugador con todos sus atributos pasados por
 	 * parámetro.
 	 */
-	public Jugador(Mapa mapa, Teclado teclado, Sprite sprite, int posicionX, int posicionY, Integer vidaMax,
-			Integer defensa, Integer resistenciaM, Integer dañoF, Integer dañoM, Integer velocidad, Integer level,
-			String clase, Integer ExpBase) {
+	public Jugador(Mapa mapa, Teclado teclado, Sprite sprite, int posicionX, int posicionY) {
 		Ente.mapa = mapa;
 		Jugador.teclado = teclado;
 		this.sprite = sprite;
 		this.x = posicionX;
 		this.y = posicionY;
-
-		statsI = new HashMap<>();
-		statsI.put(this.vidaMax, Dado.tirarDado(31));
-		statsI.put(this.resistenciaF, Dado.tirarDado(31));
-		statsI.put(Jugador.resistenciaM, Dado.tirarDado(31));
-		statsI.put(this.dañoF, Dado.tirarDado(31));
-		statsI.put(this.dañoM, Dado.tirarDado(31));
-		statsI.put(this.velocidad, Dado.tirarDado(31));
-
-		this.clase = clase;
-
-		stats = new LinkedHashMap<>();
-
-		vidaMax = CalcularStats.calcularHp(vidaMax, vidaMax, level);
-		stats.put(this.vidaActual, stats.get(this.vidaMax));
-		stats.put(this.dañoF, CalcularStats.calcularStat(dañoF, statsI.get(this.dañoF), level));
-		stats.put(this.dañoM, CalcularStats.calcularStat(dañoM, statsI.get(this.dañoM), level));
-		stats.put(this.resistenciaF, CalcularStats.calcularStat(defensa, statsI.get(this.resistenciaF), level));
-		stats.put(Jugador.resistenciaM,
-				CalcularStats.calcularStat(resistenciaM, statsI.get(Jugador.resistenciaM), level));
-		stats.put(this.velocidad, CalcularStats.calcularStat(velocidad, statsI.get(this.velocidad), level));
-		stats.put(this.exp, CalcularStats.setearExp(level));
-		stats.put(this.nivel, level);
-
-		habilidades = new ArrayList<Habilidad>();
-		conVida = true;
 
 	}
 
@@ -117,190 +87,6 @@ public class Jugador extends Criatura {
 		stats = new LinkedHashMap<>();
 		habilidades = new ArrayList<Habilidad>();
 	}
-
-//	public void RecuperarSalud() {
-//		setVidaActual(getVidaMax());
-//	}
-
-	public boolean conVida() {
-		return conVida;
-	}
-
-//	public void mostrarStatsPersonaje()
-//	{
-//		InteraccionUsuario.MostrarStatsPersonaje(stats);
-//	}
-//	
-//	public void mostrarVida()
-//	{
-//		InteraccionUsuario.MostrarVida(getVidaMax(),getVidaActual());
-//	}
-//	
-
-	/**
-	 * Resta la cantidad de vida que se pasa por parámetro.
-	 */
-	public void QuitarVida(int resta) {
-		int vida = stats.get(vidaActual);
-		vida -= resta;
-		stats.put(vidaActual, vida);
-	}
-
-	protected void setHabilidades(ArrayList<Habilidad> h) {
-		habilidades = h;
-	}
-
-//	public void mostrarHabilidades()
-//	{
-//		InteraccionUsuario.MostrarHabilidades(this);
-//	}
-
-	// Getters y Setters
-
-	public int getResistenciaM() {
-		return stats.get(resistenciaM);
-	}
-
-	public int getVelocidad() {
-		return stats.get(velocidad);
-	}
-
-	@Override
-	public int getVidaActual() {
-		return stats.get(vidaActual);
-	}
-
-	public String getVidaMax() {
-		return vidaMax;
-	}
-
-	public int getResistenciaF() {
-		return stats.get(resistenciaF);
-	}
-
-	public int getDañoF() {
-		return stats.get(dañoF);
-	}
-
-	public int getDañoM() {
-		return stats.get(dañoM);
-	}
-
-	public int getExp() {
-		return stats.get(exp);
-	}
-
-	public Habilidad getHabilidad(int index) {
-		return habilidades.get(index);
-	}
-
-	public ArrayList<Habilidad> getHabilidades() {
-		return habilidades;
-	}
-
-	public String getUbicacion() {
-		return ubicacion;
-	}
-
-	public void setUbicacion(String ubicacion) {
-		this.ubicacion = ubicacion;
-	}
-
-//	@Override
-//	public int getExpBase() {
-//		return expBase;
-//	}
-//
-//	public void setExpBase(int expBase) {
-//		this.expBase = expBase;
-//	}
-
-	public void setVidaActual(int vida) {
-		stats.put(vidaActual, vida);
-	}
-
-//	public void setVidaMax(Integer vidaMax) {
-//		stats.put(vidaMax, vidaMax);
-//	}
-
-	public void setResistenciaF(int defensa) {
-		stats.put(this.resistenciaF, defensa);
-	}
-
-	public void setResistenciaM(int recistenciaM) {
-		stats.put(Jugador.resistenciaM, recistenciaM);
-	}
-
-	public void setDañoF(int dañoF) {
-		stats.put(this.dañoF, dañoF);
-	}
-
-	public void setDañoM(int dañoM) {
-		stats.put(this.dañoM, dañoM);
-	}
-
-	public void setExp(int exp) {
-		stats.put(this.exp, stats.get(this.exp) + exp);
-	}
-
-	public void setNivel(int level) {
-		stats.put(this.nivel, level);
-	}
-
-	public void setVelocidad(int velocidad) {
-		stats.put(this.velocidad, velocidad);
-	}
-
-	public String getVidaActualString() {
-		return vidaActual;
-	}
-
-	public String getVidaMaxString() {
-		return this.vidaMax;
-	}
-
-	public String getResistenciaFString() {
-		return this.resistenciaF;
-	}
-
-	public String getResistenciaMString() {
-		return Jugador.resistenciaM;
-	}
-
-	public String getDañoFString() {
-		return this.dañoF;
-	}
-
-	public String getDañoMString() {
-		return this.dañoM;
-	}
-
-	public String getVelocidadString() {
-		return this.velocidad;
-	}
-
-	public String getExpString() {
-		return this.exp;
-	}
-
-	public String getNivelString() {
-		return this.nivel;
-	}
-
-	public LinkedHashMap<String, Integer> getStatsMap() {
-		return stats;
-	}
-
-	/*
-	 * no anda esta wea public JSONObject getFormatoJSON() throws JSONException {
-	 * JSONObject a = new JSONObject(); a.put("Stats", stats); a.put("StatsI",
-	 * statsI); a.put("Habilidades", habilidades); a.put("Con Vida", conVida);
-	 * a.put("Ubicacion", ubicacion); return a; }
-	 */
-
-//	public int getNivel() {
-//		return stats.get(nivel);
-//	}
 
 	@Override
 	public void actualizar() throws OpcionInvalidoException {
@@ -404,10 +190,6 @@ public class Jugador extends Criatura {
 		if ((x >= 170 && x <= 265) && y <= 105) {
 			Manager.InicioJuego();
 
-			if (x <= 123 && y <= 123) {
-				Manager.InicioJuego();
-
-			}
 		}
 
 	}
