@@ -36,7 +36,7 @@ public class Inventario<T> {
 	}
 
 	public String removerDelInventario(int index) {
-		String mensaje = null;
+		String mensaje = "se cierra el inventario";
 
 		if (objetos.isEmpty()) {
 			mensaje = "no hay nada en el inventario";
