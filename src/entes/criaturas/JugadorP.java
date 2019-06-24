@@ -53,7 +53,7 @@ public class JugadorP implements Serializable {
 
 	private ArrayList<Habilidad> habilidades;
 
-	public Inventario<Object> inventario;
+	private Inventario<Object> inventario;
 
 	private boolean conVida;
 
@@ -120,6 +120,10 @@ public class JugadorP implements Serializable {
 	/**
 	 * Recupera toda la vida perdida del personaje hasta llenarla por completo.
 	 */
+
+	public Inventario obtenerInventario() {
+		return inventario;
+	}
 
 	public void RecuperarSalud() {
 		setVidaActual(getVidaMax());

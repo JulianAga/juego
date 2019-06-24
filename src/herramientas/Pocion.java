@@ -12,5 +12,8 @@ public class Pocion {
 
 	public void tomar(JugadorP j) {
 		j.setVidaActual(j.getVidaActual() + vida);
+		if (j.getVidaActual() > j.getVidaMax()) {
+			j.setVidaActual(j.getVidaMax());
+		}
 	}
 }

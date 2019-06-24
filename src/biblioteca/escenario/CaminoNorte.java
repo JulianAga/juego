@@ -45,12 +45,12 @@ public class CaminoNorte extends Camino {
 				}
 			} else if (numero < 50 && numero > 20) {
 				InteraccionUsuario.clearScreen();
-				a.inventario.almacenarEnInventario(InteraccionUsuario.pocion());
+				a.obtenerInventario().almacenarEnInventario(InteraccionUsuario.pocion());
 			} else if (numero < 65 && numero > 50) {
 				InteraccionUsuario.clearScreen();
-				a.inventario.almacenarEnInventario(InteraccionUsuario.cajaSorpresa());
+				a.obtenerInventario().almacenarEnInventario(InteraccionUsuario.cajaSorpresa());
 			}
-			a.inventario.mostrarInventario();
+			a.obtenerInventario().mostrarInventario();
 		} else if (ubicacion >= 5) {
 			while (!flag) {
 				opcion = InteraccionUsuario.FinalCamino(Biblioteca.Mapa_PuebloSegundo());

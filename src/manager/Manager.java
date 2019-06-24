@@ -114,18 +114,18 @@ public class Manager {
 					InteraccionUsuario.separador();
 					break;
 				case 3:
-					int limite = jugador.inventario.mostrarInventario();
+					int limite = jugador.obtenerInventario().mostrarInventario();
 
 					int opcionInventario;
-					if (!jugador.inventario.estaVacio()) {
+					if (!jugador.obtenerInventario().estaVacio()) {
 						do {
 							opcionInventario = InteraccionUsuario.ElegirOpcion();
 							if (opcionInventario >= limite || opcionInventario < 0) {
 								System.out.println("Error, ingrese una opcion valida");
 							}
 						} while (opcionInventario >= limite || opcionInventario < 0);
-						Object obj = jugador.inventario.elegirObjeto(opcionInventario);
-						System.out.println(jugador.inventario.removerDelInventario(opcionInventario));
+						Object obj = jugador.obtenerInventario().elegirObjeto(opcionInventario);
+						System.out.println(jugador.obtenerInventario().removerDelInventario(opcionInventario));
 						if (obj instanceof Pocion) {
 							((Pocion) obj).tomar(jugador);
 						} else {
