@@ -106,33 +106,14 @@ public class InteraccionUsuario{
 	}
 
 	public static int ElegirOpcion() {
-		int opcion;
-		String cadena;
-		scr = new Scanner(System.in);
-		cadena = scr.nextLine();
-		if(Validacion(cadena))
-		{
-			opcion = Integer.parseInt(cadena);
+		try {
+			scr = new Scanner(System.in);
+			return scr.nextInt();
+		} catch (Exception e) {
+			System.out.println();
+			return scr.nextInt();
 		}
-		else
-		{
-			InteraccionUsuario.OpcionInvalida();
-			opcion = ElegirOpcion();
-		}
-		return opcion;
-	}
-	public static boolean Validacion(String cadena)
-	{
-		int num;
-		try
-		{
-			num = Integer.parseInt(cadena);
-			return true;
-		}
-		catch(Exception e)
-		{
-			return false;
-		}
+
 	}
 	// Metodos varios
 
