@@ -65,7 +65,7 @@ public class Juego extends Canvas implements Runnable {
 		mapa = new MapaCargado("/mapas/mapaDesierto.png");
 
 		enemigo = new Enemigo(mapa, Sprite.STANDING, 123, 123);
-		jugador = new Jugador(mapa, teclado, Sprite.ARRIBA0, 225, 225, 100, 12, 12, 12, 14, 21, 45, "paladin", 0);
+		jugador = new Jugador(mapa, teclado, Sprite.ARRIBA0, 225, 225);
 
 		//
 		ventana = new JFrame(NOMBRE);
@@ -113,6 +113,11 @@ public class Juego extends Canvas implements Runnable {
 
 		enemigo.actualizar();
 
+		if ((jugador.obtenerPosicionX() >= 170 && jugador.obtenerPosicionX() <= 265)
+				&& jugador.obtenerPosicionY() <= 106) {
+			ventana.setVisible(false);
+		}
+
 		if (teclado.salir) {
 			System.exit(0);
 		}
@@ -151,7 +156,7 @@ public class Juego extends Canvas implements Runnable {
 		g.drawString(CONTADOR_FPS, 10, 35);
 		g.drawString("X. " + jugador.obtenerPosicionX(), 10, 50);
 		g.drawString("Y. " + jugador.obtenerPosicionY(), 10, 65);
-		g.drawString("Vida: " + jugador.getResistenciaF(), 10, 75);
+//		g.drawString("Vida: " + jugador.getResistenciaF(), 10, 75);
 		g.dispose();
 
 		estrategia.show();

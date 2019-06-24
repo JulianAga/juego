@@ -18,7 +18,7 @@ public class Paladin extends JugadorP {
 	private final static int dañoF = 110;
 	private final static int dañoM = 50;
 	private final static int velocidad = 50;
-	private final static String clase = "Ladron";
+	private final static String clase = "paladin";
 	private final static int expBase = 100;
 
 	public Paladin() {

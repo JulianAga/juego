@@ -121,10 +121,10 @@ public class Manager extends Excepcion {
 					if (!caminoNorte.inventario.estaVacio()) {
 						do {
 							opcionInventario = InteraccionUsuario.ElegirOpcion();
-							if (opcionInventario > limite || opcionInventario < 0) {
+							if (opcionInventario >= limite || opcionInventario < 0) {
 								System.out.println("Error, ingrese una opcion valida");
 							}
-						} while (opcionInventario > limite || opcionInventario < 0);
+						} while (opcionInventario >= limite || opcionInventario < 0);
 						Object obj = caminoNorte.inventario.elegirObjeto(opcionInventario);
 						System.out.println(caminoNorte.inventario.removerDelInventario(opcionInventario));
 						if (obj instanceof Pocion) {
