@@ -2,6 +2,10 @@ package combate;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Inventario<T> {
 
 	private static final int LIMITE_INVENTARIO = 7;
@@ -60,4 +64,16 @@ public class Inventario<T> {
 		return objetos.get(i);
 	}
 
+	public JSONArray getFormatoJSON() throws JSONException
+	{
+		JSONObject obj = new JSONObject();
+		JSONArray arr = new JSONArray();
+		for(int i = 0; i < objetos.size() ; i++)
+		{
+			obj.put("inventario "+i,objetos.get(i));
+			arr.put(obj);
+		}
+		return arr;
+	}
+	
 }

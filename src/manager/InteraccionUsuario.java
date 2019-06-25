@@ -28,11 +28,15 @@ public class InteraccionUsuario{
 		System.out.println("1.Descansar en la posada (Gratis)");
 		System.out.println("2.Avanzar");
 		System.out.println("3.Retroceder");
+		System.out.println("4.Guardar Partida");
 		int opcion = ElegirOpcion();
 		clearScreen();
 		return opcion;
 	}
-
+	public static void GuardadoExitoso()
+	{
+		System.out.println("Se guardo exitosamente...");
+	}
 	public static void clearScreen() {
 		for (int i = 0; i < 50; i++)
 			System.out.println();

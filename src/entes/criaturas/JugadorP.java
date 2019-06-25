@@ -302,7 +302,11 @@ public class JugadorP implements Serializable {
 		return stats;
 	}
 
-	public JSONObject getFormatoJSON() throws JSONException {
+	//Jugador p = JSON
+	
+	protected JSONObject getStatsFormatoJSON() throws JSONException 
+	{
+		
 		JSONObject a = new JSONObject();
 		a.put("Vida actual", this.getVidaActual());
 		a.put("Vida max", this.getVidaMax());
@@ -315,42 +319,33 @@ public class JugadorP implements Serializable {
 		a.put("Nivel", this.getNivel());
 		a.put("Con Vida", this.conVida());
 		a.put("Ubicacion", this.getUbicacion());
+		
 		return a;
 	}
 	
-	public JSONObject getFormatoJSONInventario() throws JSONException{
-		JSONObject a = new JSONObject();
-		a.put("Inventario", this.obtenerInventario());
-		return a;
-	}
-	
-	public JSONArray getFormatoJSONArray() throws JSONException{
-		JSONArray arr = new JSONArray();
-        arr.put(this.getFormatoJSON());
-        arr.put(this.getFormatoJSONInventario());
+	protected JSONArray getInventarioFormatoJSON() throws JSONException
+	{
+		JSONArray arr = inventario.getFormatoJSON();	
 		return arr;
 	}
-
-	public static void grabar(JSONArray array) {
-		try {
-			FileWriter file = new FileWriter("statsinventario.json");
-			file.write(array.toString());
-			file.flush();
-			file.close();
-
-		} catch (IOException e) {
-			e.printStackTrace();
+	
+	protected JSONArray getHabilidadesFormatoJSONArray() throws JSONException
+	{
+		JSONArray arr = new JSONArray();
+		for(Habilidad e : habilidades)
+		{
+			arr.put(e.getFormatoJSONObject());
 		}
+		return arr;
 	}
-
-	public static String leer() {
-		String contenido = "";
-		try {
-			contenido = new String(Files.readAllBytes(Paths.get("test1.json")));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return contenido;
+	
+	
+	public JSONObject getPersonajeFormatoJSON() throws JSONException
+	{
+		JSONObject o = new JSONObject();
+		o.put("stats",this.getStatsFormatoJSON());
+        o.put("inventario",this.getInventarioFormatoJSON());
+        o.put("habilidades",this.getHabilidadesFormatoJSONArray());
+		return o;
 	}
-
 }

@@ -15,7 +15,7 @@ public class PerroSalvaje extends JugadorP {
 	private final static int dañoM = 20;
 	private final static int velocidad = 40;
 	private final static String clase = "PerroSalvaje";
-	private final static int experienciaBase = 50;
+	private final static int experienciaBase = 220;
 
 	public PerroSalvaje() {
 		super();

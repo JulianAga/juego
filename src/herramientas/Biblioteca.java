@@ -40,8 +40,8 @@ public class Biblioteca {
 	 */
 	public static ArrayList<Habilidad> CargarHabilidadesLadron() {
 		ArrayList<Habilidad> h = new ArrayList<Habilidad>();
-		h.add(new Habilidad("Facazo", "F", 40, 0, 0, 1));
-		h.add(new Habilidad("Golpe Rápido", "F", 60, 0, 2, 2));
+		h.add(new Habilidad("Facazo", "F", 40, 0, 1));
+		h.add(new Habilidad("Golpe Rápido", "F", 60, 2, 2));
 		return h;
 	}
 
@@ -58,7 +58,7 @@ public class Biblioteca {
 	 */
 	public static ArrayList<Habilidad> CargarHabilidadesPerro() {
 		ArrayList<Habilidad> h = new ArrayList<Habilidad>();
-		h.add(new habilidades.Habilidad("Mordisco", "F", 30, 0, 0, 1));
+		h.add(new habilidades.Habilidad("Mordisco", "F", 30, 0, 1));
 		return h;
 	}
 
@@ -75,8 +75,8 @@ public class Biblioteca {
 	 */
 	public static ArrayList<Habilidad> CargarHabilidadesPaladin() {
 		ArrayList<Habilidad> h = new ArrayList<Habilidad>();
-		h.add(new Habilidad("Espada Ancha", "F", 60, 0, 0, 1));
-		h.add(new Habilidad("Golpe Pesado", "F", 90, 0, 2, 0));
+		h.add(new Habilidad("Espada Ancha", "F", 60, 0, 1));
+		h.add(new Habilidad("Golpe Pesado", "F", 90, 2, 0));
 		return h;
 	}
 
@@ -93,8 +93,8 @@ public class Biblioteca {
 	 */
 	public static ArrayList<Habilidad> CargarHabilidadesMago() {
 		ArrayList<Habilidad> h = new ArrayList<Habilidad>();
-		h.add(new Habilidad("Golpe Baston", "F", 30, 0, 0, 1));
-		h.add(new Habilidad("Bola de Fuego Menor", "F", 50, 5, 0, 1));
+		h.add(new Habilidad("Golpe Baston", "F", 30, 0, 1));
+		h.add(new Habilidad("Bola de Fuego Menor", "M", 50, 0, 1));
 		return h;
 	}
 }

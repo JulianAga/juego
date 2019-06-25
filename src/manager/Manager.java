@@ -47,14 +47,14 @@ public class Manager {
 			break;
 			}
 		}
-		JSONArray arr = new JSONArray();
+	/*	JSONArray arr = new JSONArray();
 		try {
 			arr = jugador.getFormatoJSONArray();
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		jugador.grabar(arr);
+		jugador.grabar(arr);*/
 	}
 
 	public static void FinJuego() {
@@ -64,8 +64,9 @@ public class Manager {
 	/**
 	 * Comienza el juego evaluando la posición en la que se encuentra el jugador y
 	 * continúa desde allí.
+	 * @throws JSONException 
 	 */
-	public static void Juego(JugadorP jugador) {
+	public static void Juego(JugadorP jugador){
 		int opcion;
 		PuebloInicio puebloInicio = new PuebloInicio();
 		CaminoNorte caminoNorte = new CaminoNorte();
@@ -93,9 +94,20 @@ public class Manager {
 					puebloInicio.Retroceder(jugador);
 					InteraccionUsuario.separador();
 					break;
+				case 4:
+					try
+					{
+						puebloInicio.GuardarPartida(jugador.getPersonajeFormatoJSON());
+					}
+					catch(JSONException e)
+					{
+						System.out.println(e);
+					}
+					break;
 				default:
 					InteraccionUsuario.OpcionInvalida();
 					InteraccionUsuario.separador();
+					break;
 				}
 			}
 			if (jugador.getUbicacion().equals(Biblioteca.Mapa_CaminoNorte())) {
