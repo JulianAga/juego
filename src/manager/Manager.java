@@ -2,7 +2,6 @@ package manager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import biblioteca.escenario.CaminoNorte;
 import biblioteca.escenario.PuebloInicio;
@@ -27,7 +26,7 @@ public class Manager {
 		JugadorP jugador = null;
 		while (!flag) {
 			InteraccionUsuario.InicioJuego();
-			comando = InteraccionUsuario.ElegirOpcion(); 
+			comando = InteraccionUsuario.ElegirOpcion();
 			InteraccionUsuario.separador();
 			switch (comando) {
 			case 1: // Crear Ladron.
@@ -44,7 +43,7 @@ public class Manager {
 				break;
 			default:
 				InteraccionUsuario.OpcionInvalida();
-			break;
+				break;
 			}
 		}
 		JSONArray arr = new JSONArray();
@@ -136,6 +135,7 @@ public class Manager {
 			}
 		}
 		System.out.println("Perdiste");
+
 		System.out.close();
 	}
 

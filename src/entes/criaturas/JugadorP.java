@@ -320,18 +320,23 @@ public class JugadorP implements Serializable {
 
 	public JSONObject getFormatoJSONInventario(int i) throws JSONException {
 		JSONObject a = new JSONObject();
-		a.put("Inventario", this.obtenerInventario().elegirObjeto(i).getClass().getSimpleName());
+		a.put("objeto", this.obtenerInventario().elegirObjeto(i).getClass().getSimpleName());
 		return a;
 	}
 
 	public JSONArray getFormatoJSONArray() throws JSONException {
+		JSONObject arr2 = new JSONObject();
 		JSONArray arr = new JSONArray();
 		arr.put(this.getFormatoJSON());
 		int i;
-		for (i = 0; i < obtenerInventario().cantidadObjetos(); i++) {
-			arr.put(this.getFormatoJSONInventario(i));
-			i++;
+		if (obtenerInventario().cantidadObjetos() > 0 && conVida() == false) {
+			for (i = 0; i < obtenerInventario().cantidadObjetos() - 1; i++) {
+//				System.out.println(obtenerInventario().cantidadObjetos());
+				arr2.put("Inventario", getFormatoJSONInventario(i));
+				i++;
+			}
 		}
+		arr.put(arr2);
 		return arr;
 	}
 
