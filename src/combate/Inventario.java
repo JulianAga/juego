@@ -64,6 +64,7 @@ public class Inventario<T> {
 		return objetos.get(i);
 	}
 
+
 	public JSONArray getFormatoJSON() throws JSONException
 	{
 		JSONObject obj = new JSONObject();
@@ -76,4 +77,9 @@ public class Inventario<T> {
 		return arr;
 	}
 	
+
+	public int cantidadObjetos() {
+		return objetos.size();
+	}
+
 }

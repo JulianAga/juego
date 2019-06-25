@@ -339,6 +339,21 @@ public class JugadorP implements Serializable {
 		return arr;
 	}
 	
+	public JSONObject getFormatoJSONInventario(int i) throws JSONException {
+		JSONObject a = new JSONObject();
+		a.put("objeto", this.obtenerInventario().elegirObjeto(i).getClass().getSimpleName());
+		return a;
+	}
+
+	public JSONArray getFormatoJSONArray() throws JSONException {
+		JSONArray arr = new JSONArray();
+		for(Habilidad e : habilidades) 
+		{
+			arr.put(e.getFormatoJSONObject());
+		}
+		return arr;
+	}
+
 	
 	public JSONObject getPersonajeFormatoJSON() throws JSONException
 	{
