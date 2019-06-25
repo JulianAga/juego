@@ -71,7 +71,7 @@ public class Inventario<T> {
 		JSONArray arr = new JSONArray();
 		for(int i = 0; i < objetos.size() ; i++)
 		{
-			obj.put("inventario "+i,objetos.get(i));
+			obj.put("inventario "+i,objetos.get(i).toString());
 			arr.put(obj);
 		}
 		return arr;

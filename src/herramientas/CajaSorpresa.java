@@ -21,5 +21,10 @@ public class CajaSorpresa {
 		}
 		return mensaje;
 	}
+	
+	public String toString() 
+	{
+		return "caja sorpresa";
+	}
 
 }
