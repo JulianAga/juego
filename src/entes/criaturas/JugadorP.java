@@ -329,9 +329,10 @@ public class JugadorP implements Serializable {
 		JSONArray arr = new JSONArray();
 		arr.put(this.getFormatoJSON());
 		int i;
-		if (obtenerInventario().cantidadObjetos() > 0 && conVida() == false) {
+		System.out.println(obtenerInventario().cantidadObjetos());
+
+		if (obtenerInventario().cantidadObjetos() > 0) {
 			for (i = 0; i < obtenerInventario().cantidadObjetos() - 1; i++) {
-//				System.out.println(obtenerInventario().cantidadObjetos());
 				arr2.put("Inventario", getFormatoJSONInventario(i));
 				i++;
 			}
