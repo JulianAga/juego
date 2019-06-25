@@ -60,4 +60,8 @@ public class Inventario<T> {
 		return objetos.get(i);
 	}
 
+	public int cantidadObjetos() {
+		return objetos.size();
+	}
+
 }

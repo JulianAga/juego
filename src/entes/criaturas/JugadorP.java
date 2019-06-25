@@ -317,17 +317,21 @@ public class JugadorP implements Serializable {
 		a.put("Ubicacion", this.getUbicacion());
 		return a;
 	}
-	
-	public JSONObject getFormatoJSONInventario() throws JSONException{
+
+	public JSONObject getFormatoJSONInventario(int i) throws JSONException {
 		JSONObject a = new JSONObject();
-		a.put("Inventario", this.obtenerInventario());
+		a.put("Inventario", this.obtenerInventario().elegirObjeto(i).getClass().getSimpleName());
 		return a;
 	}
-	
-	public JSONArray getFormatoJSONArray() throws JSONException{
+
+	public JSONArray getFormatoJSONArray() throws JSONException {
 		JSONArray arr = new JSONArray();
-        arr.put(this.getFormatoJSON());
-        arr.put(this.getFormatoJSONInventario());
+		arr.put(this.getFormatoJSON());
+		int i;
+		for (i = 0; i < obtenerInventario().cantidadObjetos(); i++) {
+			arr.put(this.getFormatoJSONInventario(i));
+			i++;
+		}
 		return arr;
 	}
 
